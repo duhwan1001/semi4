@@ -17,4 +17,14 @@ public class CartDAOImpl implements CartDAO{
 		return cartList;
 	}
 
+	@Override
+	public void updateQtyPlus(SqlSession session, int cartNo) throws SQLException {
+		session.update("Cart-Mapper.updateQtyPlus",cartNo);
+	}
+
+	@Override
+	public void updateQtyMinus(SqlSession session, int cartNo) throws SQLException {
+		session.update("Cart-Mapper.updateQtyMinus",cartNo);
+	}
+
 }

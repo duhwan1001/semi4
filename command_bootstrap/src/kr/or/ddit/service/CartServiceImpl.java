@@ -32,4 +32,25 @@ public class CartServiceImpl implements CartService{
 		}
 	}
 
+	@Override
+	public void cartQtyPlus(int cartNo) throws SQLException {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+			cartDAO.updateQtyPlus(session, cartNo);
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void cartQtyMinus(int cartNo) throws SQLException {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+
+			cartDAO.updateQtyMinus(session, cartNo);
+		} finally {
+			session.close();
+		}		
+	}
+
 }

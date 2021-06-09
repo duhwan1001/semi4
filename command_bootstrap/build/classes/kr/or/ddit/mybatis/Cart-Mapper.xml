@@ -8,4 +8,22 @@
 		from cart c, product p
 		where c.user_id = #{id}
 	</select>
+	
+	<update id="updateQtyPlus">
+		update cart
+		set prod_qty = prod_qty + 1
+		where cart_no = #{cartNo}
+	</update>
+	
+	<update id="updateQtyMinus">
+		update cart
+		set prod_qty = prod_qty - 1
+		where cart_no = #{cartNo}
+	</update>
+	
+	<delete id="deleteCart">
+		delete
+		from cart
+		where cart_no = #{cartNo}
+	</delete>
 </mapper>

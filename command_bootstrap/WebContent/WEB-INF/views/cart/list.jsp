@@ -229,11 +229,11 @@
 							<td>
 							<div class="codr_unit_amount">
 								<div class="codr_amount">
-									<a href="javascript:void(0);" role="button" class="codr_b_minus payTracking" data-pt-click="PC장바구니_국내배송|택배배송|수량빼기" name="btUpdOrdQtyMinus"><span aria-hidden="true">-</span><span class="blind"></span></a>
+									<a href="javascript:void(0);" role="button" class="codr_b_minus payTracking" name="btUpdOrdQtyMinus" onclick="qtyMinus(this, '${cart.cart_no}')"><span aria-hidden="true">-</span><span class="blind"></span></a>
 									<span class="codr_inpbx">
 										<span class="codr_amount_qty">${cart.prod_qty }</span>
 									</span>
-									<a href="javascript:void(0);" role="button" class="codr_b_plus payTracking" data-pt-click="PC장바구니_국내배송|택배배송|수량더하기" name="btUpdOrdQtyPlus" data-max-psbl-qty="36"><span aria-hidden="true">+</span><span class="blind"></span></a>
+									<a href="javascript:void(0);" role="button" class="codr_b_plus payTracking" name="btUpdOrdQtyPlus" onclick="qtyPlus(this, '${cart.cart_no}')"><span aria-hidden="true">+</span><span class="blind"></span></a>
 								</div>
 							</div>
 							</td>
@@ -253,7 +253,7 @@
     <!-- /.content -->
 
 <script src="/resources/js/common.js" ></script>
-
+ <%@ include file="./cart_js.jsp" %>
 </body>
 
 
