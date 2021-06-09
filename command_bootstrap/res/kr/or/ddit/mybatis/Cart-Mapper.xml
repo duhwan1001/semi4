@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Cart-Mapper">
+	<select id="selectCartById" resultType="cart">
+		select c.CART_NO, c.USER_ID, c.PROD_ID, c.PROD_QTY,
+				p.prod_img, p.prod_name, p.prod_cost
+		from cart c, product p
+		where c.user_id = #{id}
+	</select>
+</mapper>
