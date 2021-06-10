@@ -47,9 +47,9 @@ public class OrderlogDAOImpl implements OrderlogDAO {
 	}
 
 	@Override
-	public int selectOrderlognextVal(SqlSession session) throws SQLException {
+	public int selectOrderlogNextVal(SqlSession session) throws SQLException {
 		int cnt = 0;
-		cnt = session.update("Orderlog-Mapper.selectOrderlognextVal");
+		cnt = session.selectOne("Orderlog-Mapper.selectOrderlogNextVal");
 		return cnt;
 	}
 

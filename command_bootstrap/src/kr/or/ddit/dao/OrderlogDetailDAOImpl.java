@@ -45,14 +45,21 @@ public class OrderlogDetailDAOImpl implements OrderlogDetailDAO {
 
 	@Override
 	public void insertOrderlogDetail(SqlSession session, OrderlogDetailVO orderlogDetail) throws SQLException {
-		session.update("Orderlog-Mapper.registOrderlogDetail",orderlogDetail);
+		session.update("Orderlog-Mapper.insertOrderlogDetail",orderlogDetail);
 	}
 
 	@Override
 	public int selectOrderDetaillogNextVal(SqlSession session) throws SQLException {
 		int cnt = 0; 
+		System.out.println("Detail nextval 쿼리전");
 		cnt = session.selectOne("Orderlog-Mapper.selectOrderDetaillogNextVal");
 		return cnt;
+	}
+
+	@Override
+	public void modifyOrderlogDetail(SqlSession session, Orderlog_Prod_VO orderlogProd) throws SQLException {
+		session.update("Orderlog-Mapper.modifyOrderlogDetail",orderlogProd);
+		
 	}
 
 }

@@ -104,6 +104,18 @@ public class OrderlogDetailServiceImpl implements OrderlogDetailService{
 		
 	}
 
+	@Override
+	public void modifyDetail(Orderlog_Prod_VO orderlogProd) throws SQLException {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+			orderlogDetailDAO.modifyOrderlogDetail(session, orderlogProd);
+			return ; 
+		}finally {
+			session.close();
+		}
+		
+	}
+
 	
 	
 

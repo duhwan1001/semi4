@@ -22,21 +22,24 @@ public class OrderlogRegistHandler implements Handler {
 		
 		String url="orderlog/regist_success";
 		
-		String userId = request.getParameter("userId");
-		String buyDate = request.getParameter("buyDate");
-		String orderId = request.getParameter("orderId");
-		int prodId = Integer.parseInt(request.getParameter("prodId"));
-		int prodQty = Integer.parseInt(request.getParameter("prodQty"));
+//		String userId = request.getParameter("userId");
+//		String buyDate = request.getParameter("buyDate");
+//		String orderId = request.getParameter("orderId");
+//		int prodId = Integer.parseInt(request.getParameter("prodId"));
+//		int prodQty = Integer.parseInt(request.getParameter("prodQty"));
 
+		int prodId = 2;
+		int prodQty = 1;
 		
-		userId = "cdwcdw34";
-		orderId = "od00001_sysdate";
+		String userId = "cdwcdw34";
+		String orderId = "od"+"00001"+"_"+new Date();
 		
 		OrderlogVO orderlog = new OrderlogVO();
+		
 		OrderlogDetailVO orderlogDetail = new OrderlogDetailVO();
 		
-		orderlog.setOrderId("orderId");
-		orderlog.setUserId("userId");
+		orderlog.setOrderId(orderId);
+		orderlog.setUserId(userId);
 		orderlog.setBuyDate(new Date());
 		
 		orderlogDetail.setOrderId(orderId);

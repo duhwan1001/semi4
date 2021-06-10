@@ -18,17 +18,17 @@ import kr.or.ddit.dto.OrderlogVO;
 
 public class OrderlogServiceImpl implements OrderlogService{
 
-	SqlSessionFactory sqlSessionFactory;
+	private SqlSessionFactory sqlSessionFactory;
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		this.sqlSessionFactory = sqlSessionFactory;
 	}
 	
-	OrderlogDAO orderlogDAO;
+	private OrderlogDAO orderlogDAO;
 	public void setOrderlogDAO(OrderlogDAO orderlogDAO) {
 		this.orderlogDAO = orderlogDAO;
 	}
 	
-	OrderlogDetailDAO orderlogDetailDAO;
+	private OrderlogDetailDAO orderlogDetailDAO;
 	public void setOrderlogDetailDAO(OrderlogDetailDAO orderlogDetailDAO) {
 		this.orderlogDetailDAO = orderlogDetailDAO;
 	}
@@ -46,7 +46,6 @@ public class OrderlogServiceImpl implements OrderlogService{
 //			System.out.println(cri.getPerPageNum());
 			
 			pageMaker.setTotalCount(orderlogDAO.selectOrderlogSearchListCount(session, userId, cri));
-			System.out.println("totalcount 후");
 			Map<String, Object> dataMap = new HashMap<String, Object>();
 			
 			List<OrderlogVO> orderlogList = orderlogDAO.selectOrderlogSearchList(session, userId, cri);
@@ -106,18 +105,17 @@ public class OrderlogServiceImpl implements OrderlogService{
 		
 		try {
 			
-			int val = orderlogDAO.selectOrderlognextVal(session);
-			String orderId = "ORD"+val+new Date();
+			int val = orderlogDAO.selectOrderlogNextVal(session);
+			String orderId = "ORD"+val+"_"+String.valueOf(new Date().getTime());
 			
-			System.out.println(orderId);
 			orderlog.setOrderId(orderId);
-			
 			orderlogDAO.insertOrderlog(session, orderlog);
 			
-			
 			int orderDetailNo = orderlogDetailDAO.selectOrderDetaillogNextVal(session);
+			
 			orderlogDetail.setOrderDetailNo(orderDetailNo);
 			orderlogDetail.setOrderId(orderId);
+			
 			orderlogDetailDAO.insertOrderlogDetail(session, orderlogDetail);
 			
 		}finally {

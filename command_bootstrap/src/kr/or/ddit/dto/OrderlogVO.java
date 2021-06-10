@@ -6,7 +6,7 @@ public class OrderlogVO {
 	
 	private String orderId;
 	private String userId;
-	private String orderStatus;
+	private String orderStatus="진행중";
 	private Date buyDate;
 	
 	public String getOrderId() {

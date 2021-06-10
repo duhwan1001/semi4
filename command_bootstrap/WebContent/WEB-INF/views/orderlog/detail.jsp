@@ -57,15 +57,21 @@
 									<div class="card">
 										<div class="card-header">${orderlogProd.orderDetailStatus }</div>
 										<div class="card-body">
-										<div class="row">
-											<div id="prodpictureView" class="col-sm-3"></div>
-											<div class="col-sm-6">${orderlogProd.prodName }</div>
-											<div class="col-sm-1">수량 : ${orderlogProd.prodQty }</div>
-											<div class="col-sm-2">가격 : ${orderlogProd.prodCost }</div>
-										</div>
+											<div class="row">
+												<div id="prodpictureView" class="col-sm-3">
+													<img width="30px" height="30px"
+														src="/orderlog/getPicture.do?picture=${orderlogProd.prodImg}"
+														class="img-circle elevation-2">
+												</div>
+												<div class="col-sm-6">${orderlogProd.prodName }</div>
+												<div class="col-sm-1">수량 : ${orderlogProd.prodQty }</div>
+												<div class="col-sm-2">가격 : ${orderlogProd.prodCost }</div>
+											</div>
 											<div class="row">
 												<div class="col-sm-6">가격 : ${orderlogProd.prodCost }*${orderlogProd.prodQty }</div>
-												<div class="col-sm-6"><button type="button" onclick="">장바구니담기</button></div>
+												<div class="col-sm-6">
+													<button type="button" onclick="">장바구니담기</button>
+												</div>
 											</div>
 										</div>
 										<div class="card-footer"></div>
@@ -75,15 +81,19 @@
 									<div class="card">
 										<div class="card-body">
 											<div>
-												<button class="btn btn-primary " type="button" onclick="">배송조회</button>
+												<button style="width: 100%" class="btn btn-primary "
+													type="button" onclick="">배송조회</button>
 											</div>
+											<div style="height: 3px"></div>
 											<div>
-												<button class="btn btn-primary" type="button"
-													onclick="OpenWindow('modifyForm.do?orderId=${orderlog.orderId }','','800','900')">교환:반품</button>
+												<button style="width: 100%" class="btn btn-primary"
+													type="button"
+													onclick="OpenWindow('modifyForm.do?orderDetailNo=${orderlogProd.orderDetailNo}','','400','500')">교환.반품</button>
 											</div>
+											<div style="height: 3px"></div>
 											<div>
-												<button class="btn btn-primary" type="button" onclick="">리뷰
-													작성</button>
+												<button style="width: 100%" class="btn btn-primary"
+													type="button" onclick="">리뷰 작성</button>
 											</div>
 										</div>
 									</div>
@@ -94,22 +104,11 @@
 				</div>
 			</div>
 		</c:forEach>
-		<div>결제정보</div>
+		<div>결제정보 안헐거</div>
 		<c:set var="list_url" value="list.do"></c:set>
 	</section>
 	<!-- content -->
 	<script src="/resources/js/common.js"></script>
-	<script type="text/javascript">
-		window.onload=function(){
-			 $('div#prodpictureView')
-             .css({'background-image':'url(/prodimg.jpg)',
-                'background-position':'center',
-                'background-size':'cover',
-                'background-repeat':'no-repeat'
-                });
-		}
-
-	</script>
 </body>
 
 

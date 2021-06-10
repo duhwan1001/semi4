@@ -2,19 +2,13 @@ package kr.or.ddit.dto;
 
 
 public class OrderlogDetailVO {
+	
+	
 	private int orderDetailNo;
 	private int prodId;
 	private int prodQty;
 	private String orderId;
-	private String orderDetailStatus;
-	
-	
-	public String getOrderDetailStatus() {
-		return orderDetailStatus;
-	}
-	public void setOrderDetailStatus(String orderDetailStatus) {
-		this.orderDetailStatus = orderDetailStatus;
-	}
+	private String orderDetailStatus="결제완료";
 	public int getOrderDetailNo() {
 		return orderDetailNo;
 	}
@@ -38,7 +32,14 @@ public class OrderlogDetailVO {
 	}
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
-	}	
+	}
+	public String getOrderDetailStatus() {
+		return orderDetailStatus;
+	}
+	public void setOrderDetailStatus(String orderDetailStatus) {
+		this.orderDetailStatus = orderDetailStatus;
+	}
+	
 	
 	
 	

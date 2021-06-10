@@ -3,22 +3,17 @@
 
 <mapper namespace="Orderlog-Mapper">
 
-<!-- 	<sql id="search"> -->
-<!-- 		<if test="searchType == 's'.toString()"> -->
-<!-- 			and ORDER_STATUS like '%'||#{keyword}||'%' -->
-<!-- 		</if> -->
-<!-- 		<if test="searchType == 'd'.toString()"> -->
-<!-- 			and BUY_DATE like '%'||#{keyword}||'%' -->
-<!-- 		</if> -->
-<!-- 	</sql> -->
+	<sql id="search">
+		<if test="searchType == 's'.toString()">
+			and ORDER_STATUS like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'd'.toString()">
+			and BUY_DATE like '%'||#{keyword}||'%'
+		</if>
+	</sql>
+	
 
 
-	<select id="selectSearchOrderlogList" resultType="orderlog">
-		SELECT * 
-		FROM ORDER_LOG
-		WHERE USER_ID = #{userId}
-		ORDER BY ORDER_ID DESC
-	</select>
 	
 
 	<select id="selectSearchOrderlogListCount" resultType="int">
@@ -31,17 +26,38 @@
 	</select>
 	
 	<select id="selectSearchOrderlogDetailListCount" resultType="int">
-		SELECT
-		COUNT(*)
-		FROM ORDER_LOG_DETAIL
-		WHERE ORDER_ID = #{orderId}
+<!-- 		SELECT -->
+<!-- 		COUNT(*) -->
+<!-- 		FROM ORDER_LOG_DETAIL -->
+<!-- 		WHERE ORDER_ID = #{orderId} -->
 <!-- 		<include refid="search" /> -->
 		ORDER BY ORDER_ID DESC
+		SELECT COUNT(O.ORDER_ID)
+		FROM ORDER_LOG o
+        inner join order_log_detail d
+        on O.ORDER_ID = D.ORDER_ID
+        inner join product p
+        on d.PROD_ID = P.PROD_ID
+        WHERE USER_ID = #{userId}
+<!--         AND P.PROD_NAME = '123' -->
+		ORDER BY o.ORDER_ID DESC
 	</select>
 	
-	
-	
-	
+	<select id="selectSearchOrderlogList" resultType="orderlog">
+<!-- 		SELECT *  -->
+<!-- 		FROM ORDER_LOG -->
+<!-- 		WHERE USER_ID = #{userId} -->
+<!-- 		ORDER BY ORDER_ID DESC -->
+		SELECT o.*
+		FROM ORDER_LOG o
+        inner join order_log_detail d
+        on O.ORDER_ID = D.ORDER_ID
+        inner join product p
+        on d.PROD_ID = P.PROD_ID
+        WHERE USER_ID = #{userId}
+<!--         AND P.PROD_NAME = '123' -->
+		ORDER BY o.ORDER_ID DESC
+	</select>
 	
 	<select id="selectOrderlogListByOrderId" resultType="orderlog">
 		SELECT *
@@ -49,15 +65,16 @@
 		WHERE ORDER_ID = #{orderId}
 	</select>
 	
+	
 	<select id="selectOrderlogDetailListByOrderId" resultType="orderlogprod">
 		SELECT 
-		O.*,
-		D.ORDER_DETAIL_NO,
-		D.ORDERDETAIL_STATUS,
-		P.PROD_ID,
-		P.PROD_NAME,
-		P.PROD_QTY,
-		P.PROD_IMG
+			O.*,
+			D.ORDER_DETAIL_NO,
+			D.ORDERDETAIL_STATUS,
+			P.PROD_ID,
+			P.PROD_NAME,
+			D.PROD_QTY,
+			P.PROD_IMG
 		FROM 
 			ORDER_LOG O
 		INNER JOIN 
@@ -72,7 +89,7 @@
 			O.ORDER_ID = #{orderId}
 	</select>
 	
-	<update id="modifyOrderlog" parameterType="orderlog">
+	<update id="modifyOrderlog">
 		UPDATE ORDER_LOG
 		SET
 		ORDER_ID = #{orderId}
@@ -83,25 +100,42 @@
 	</update>
 	
 	
-	<update id="registOrderlog">
+	<update id="modifyOrderlogDetail">
+		UPDATE ORDER_LOG_DETAIL
+		SET
+		ORDER_DETAIL_NO = ORDER_DETAIL_NO
+		<if test="orderDetailStatus == 'r'.toString">
+		,ORDERDetail_STATUS='환불신청'
+		</if>
+		<if test="orderDetailStatus == 'e'.toString">
+		,ORDERDetail_STATUS='교환신청'
+		</if>
+		WHERE
+		ORDER_DETAIL_NO = #{orderDetailNo}
+	</update>
+	
+	
+	<update id="insertOrderlog">
 		insert into
 		order_log(USER_ID,BUY_DATE,ORDER_STATUS,ORDER_ID)
 		values(#{userId},#{buyDate},#{orderStatus},#{orderId})
 	</update>
 	
 	
-	<update id="registOrderlogDetail">
+	<update id="insertOrderlogDetail">
 		insert into
-		order_log_detail(ORDER_DETAIL_NO,PROD_ID,PROD_QTY,ORDER_ID,ORDERDETAIL_STATUS)
-		values(#{orderDetailNo},#{prodId},#{orderId},#{orderDetailStatus})
+		ORDER_LOG_DETAIL
+			(ORDER_DETAIL_NO,PROD_ID,PROD_QTY,ORDER_ID,ORDERDETAIL_STATUS)
+		values
+			(#{orderDetailNo},#{prodId},#{prodQty},#{orderId},#{orderDetailStatus})
 	</update>
 	
 	<select id="selectOrderlogNextVal" resultType="int">
-		SELECT ORDER_SEQ.NEXTVAL FROM DUAL;
+		SELECT ORDER_SEQ.NEXTVAL AS ORDER_ID FROM DUAL
 	</select>
 	
 	<select id="selectOrderDetaillogNextVal" resultType="int">
-		SELECT ORDERDETAIL_SEQ.NEXTVAL FROM DUAL;
+		SELECT ORDERDETAIL_SEQ.NEXTVAL AS ORDER_DETAIL_NO FROM DUAL
 	</select>
 
 
@@ -127,22 +161,5 @@
 <!-- 		pwd=#{pwd}, email=#{email}, phone=#{phone}, -->
 <!-- 		name=#{name}, picture=#{picture} -->
 
-<!-- 		<if test="authority != null"> -->
-<!-- 			, authority=#{authority} -->
-<!-- 		</if> -->
-<!-- 		where ORDER_ID=#{orderId} -->
-<!-- 	</update> -->
-
-<!-- 	<update id="disabledMember"> -->
-<!-- 		update ORDER -->
-<!-- 		set enabled=0 -->
-<!-- 		where ORDER_ID=#{orderId} -->
-<!-- 	</update> -->
-
-<!-- 	<update id="enabledMember"> -->
-<!-- 		update ORDER -->
-<!-- 		set enabled=1 -->
-<!-- 		where ORDER_ID=#{orderId} -->
-<!-- 	</update> -->
 
 </mapper>

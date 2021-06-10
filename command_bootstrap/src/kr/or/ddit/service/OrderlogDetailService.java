@@ -19,4 +19,6 @@ public interface OrderlogDetailService {
 	List<Orderlog_Prod_VO> getOrderlogDetailListByOrderId(String orderId) throws SQLException;
 	
 	void regist(OrderlogDetailVO orderlogDetail)throws SQLException;
+	
+	void modifyDetail(Orderlog_Prod_VO orderlogProd)throws SQLException;
 }

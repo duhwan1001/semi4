@@ -77,18 +77,22 @@
 						<div class="card-header"></div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-sm-6">
+								<div class="col-sm-8">
 									<fmt:formatDate value="${orderlog.buyDate }" />
 									주문
 								</div>
-								<div class="col-sm-6">
-									${orderlog.orderId }
+								<div class="col-sm-4">
+									주문번호 : ${orderlog.orderId }
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-10">
 									<div class="card">
-										<div class="card-header">${orderlog.orderStatus }</div>
+										<div class="card-header">
+											<div class="col-sm-6">
+												주문상태 : ${orderlog.orderStatus }
+											</div>
+										</div>
 										<div class="card-body">
 <%-- 											<div>${orderlog.orderId }</div> --%>
 <%-- 											<div>${orderlog.buyDate }</div> --%>

@@ -20,6 +20,6 @@ public interface OrderlogDAO {
 	
 	void insertOrderlog(SqlSession session, OrderlogVO orderlog) throws SQLException;
 	
-	int selectOrderlognextVal(SqlSession session) throws SQLException;
+	int selectOrderlogNextVal(SqlSession session) throws SQLException;
 	
 }

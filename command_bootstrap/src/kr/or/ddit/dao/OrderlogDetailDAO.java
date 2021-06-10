@@ -23,4 +23,5 @@ public interface OrderlogDetailDAO {
 	
 	int selectOrderDetaillogNextVal (SqlSession session) throws SQLException;
 	
+	void modifyOrderlogDetail(SqlSession session, Orderlog_Prod_VO orderlogProd) throws SQLException;
 }
