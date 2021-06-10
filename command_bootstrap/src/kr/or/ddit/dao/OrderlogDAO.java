@@ -18,7 +18,8 @@ public interface OrderlogDAO {
 	
 	List<OrderlogVO> selectOrderlogListByOrderId(SqlSession session, String orderId) throws SQLException;
 	
+	void insertOrderlog(SqlSession session, OrderlogVO orderlog) throws SQLException;
 	
-	
+	int selectOrderlognextVal(SqlSession session) throws SQLException;
 	
 }

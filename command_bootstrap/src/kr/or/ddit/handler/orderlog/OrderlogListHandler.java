@@ -47,9 +47,9 @@ public class OrderlogListHandler implements Handler {
 		
 		Map<String, Object> dataMap = orderlogService.getOrderlogList(userId, cri);
 		request.setAttribute("dataMap", dataMap);
-		request.setAttribute("orderlogList", dataMap.get("orderlogList"));
+//		request.setAttribute("orderlogList", dataMap.get("orderlogList"));
 		request.setAttribute("pageMaker", dataMap.get("pageMaker"));
-		
+
 		
 		return url;
 	}

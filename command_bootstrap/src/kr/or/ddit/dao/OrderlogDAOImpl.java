@@ -18,6 +18,7 @@ public class OrderlogDAOImpl implements OrderlogDAO {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
 		List<OrderlogVO> orderList = session.selectList("Orderlog-Mapper.selectSearchOrderlogList",userId, rowBounds);
+		
 		return orderList;
 	}
 
@@ -37,6 +38,19 @@ public class OrderlogDAOImpl implements OrderlogDAO {
 	public List<OrderlogVO> selectOrderlogListByOrderId(SqlSession session, String orderId) throws SQLException {
 		List<OrderlogVO> orderlogList = session.selectList("Orderlog-Mapper.selectOrderlogListByOrderId",orderId);
 			return orderlogList;
+	}
+
+	@Override
+	public void insertOrderlog(SqlSession session, OrderlogVO orderlog) throws SQLException {
+		session.update("Orderlog-Mapper.insertOrderlog",orderlog);
+		
+	}
+
+	@Override
+	public int selectOrderlognextVal(SqlSession session) throws SQLException {
+		int cnt = 0;
+		cnt = session.update("Orderlog-Mapper.selectOrderlognextVal");
+		return cnt;
 	}
 
 }

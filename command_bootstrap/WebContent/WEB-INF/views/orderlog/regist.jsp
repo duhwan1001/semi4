@@ -70,6 +70,24 @@
 			<!-- card-body -->
 		</div>
 	</section>
+<form role="orderForm" action="regist.do" method="post">
+	<input id="" name="pictureFile" type="file" class="form-control" style="display:none;" onchange="picture_go();">
+	<input id="oldFile" type="hidden" name="oldPicture" value="" />
+	<input type="hidden" name="checkUpload" value="0" />	
+</form>
+	
+	
+	<script>
+function orderlog(){
+	
+	
+	
+	
+}
+	
+	
+	</script>
+
 </body>
 
 

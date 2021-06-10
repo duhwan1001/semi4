@@ -6,7 +6,7 @@
 
 <head></head>
 
-<title>회원목록</title>
+<title>주문상세</title>
 
 <body>
 	<!-- Main content -->
@@ -40,29 +40,32 @@
 			<div class="card-body" style="text-align: center;"></div>
 		</div>
 		<!-- card -->
-		<c:forEach var="orderlog" items="${orderlogList }">
+		<c:forEach var="orderlogProd" items="${orderlogProdList }">
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="card">
 						<div class="card-header"></div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-sm-6">
-									<fmt:formatDate value="${orderlog.buyDate }" />
-									주문
-								</div>
+								<!-- 								<div class="col-sm-6"> -->
+								<%-- 									<fmt:formatDate value="${orderlogDetail.buyDate }" /> --%>
+								<!-- 									주문 -->
+								<!-- 								</div> -->
 							</div>
 							<div class="row">
 								<div class="col-sm-10">
 									<div class="card">
-										<div class="card-header">${orderlog.orderStatus }</div>
+										<div class="card-header">${orderlogProd.orderDetailStatus }</div>
 										<div class="card-body">
-											<div>${orderlog.orderId }</div>
-											<div>${orderlog.prodId }</div>
-											<div>${orderlog.prodQty }</div>
+										<div class="row">
+											<div id="prodpictureView" class="col-sm-3"></div>
+											<div class="col-sm-6">${orderlogProd.prodName }</div>
+											<div class="col-sm-1">수량 : ${orderlogProd.prodQty }</div>
+											<div class="col-sm-2">가격 : ${orderlogProd.prodCost }</div>
+										</div>
 											<div class="row">
-												<div class="col-sm-6">가격</div>
-												<div class="col-sm-6">장바구니담기</div>
+												<div class="col-sm-6">가격 : ${orderlogProd.prodCost }*${orderlogProd.prodQty }</div>
+												<div class="col-sm-6"><button type="button" onclick="">장바구니담기</button></div>
 											</div>
 										</div>
 										<div class="card-footer"></div>
@@ -75,7 +78,8 @@
 												<button class="btn btn-primary " type="button" onclick="">배송조회</button>
 											</div>
 											<div>
-												<button class="btn btn-primary" type="button" onclick="OpenWindow('modifyForm.do?orderId=${orderlog.orderId }','','800','900')">교환:반품</button>
+												<button class="btn btn-primary" type="button"
+													onclick="OpenWindow('modifyForm.do?orderId=${orderlog.orderId }','','800','900')">교환:반품</button>
 											</div>
 											<div>
 												<button class="btn btn-primary" type="button" onclick="">리뷰
@@ -85,23 +89,26 @@
 									</div>
 								</div>
 							</div>
-							<div>
-								배송정보
-							</div>
-							<div>
-								결제정보
-							</div>
-							
 						</div>
 					</div>
 				</div>
 			</div>
 		</c:forEach>
+		<div>결제정보</div>
 		<c:set var="list_url" value="list.do"></c:set>
 	</section>
 	<!-- content -->
 	<script src="/resources/js/common.js"></script>
 	<script type="text/javascript">
+		window.onload=function(){
+			 $('div#prodpictureView')
+             .css({'background-image':'url(/prodimg.jpg)',
+                'background-position':'center',
+                'background-size':'cover',
+                'background-repeat':'no-repeat'
+                });
+		}
+
 	</script>
 </body>
 

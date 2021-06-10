@@ -1,6 +1,7 @@
 package kr.or.ddit.service;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import kr.or.ddit.command.PageMaker;
 import kr.or.ddit.command.SearchCriteria;
 import kr.or.ddit.dao.OrderlogDAO;
+import kr.or.ddit.dao.OrderlogDetailDAO;
+import kr.or.ddit.dto.OrderlogDetailVO;
 import kr.or.ddit.dto.OrderlogVO;
 
 public class OrderlogServiceImpl implements OrderlogService{
@@ -25,6 +28,11 @@ public class OrderlogServiceImpl implements OrderlogService{
 		this.orderlogDAO = orderlogDAO;
 	}
 	
+	OrderlogDetailDAO orderlogDetailDAO;
+	public void setOrderlogDetailDAO(OrderlogDetailDAO orderlogDetailDAO) {
+		this.orderlogDetailDAO = orderlogDetailDAO;
+	}
+
 	@Override
 	public Map<String, Object> getOrderlogList(String userId, SearchCriteria cri) throws SQLException {
 		SqlSession session = sqlSessionFactory.openSession();
@@ -32,10 +40,10 @@ public class OrderlogServiceImpl implements OrderlogService{
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
-			System.out.println(cri.getKeyword());
-			System.out.println(cri.getPage());
-			System.out.println(cri.getSearchType());
-			System.out.println(cri.getPerPageNum());
+//			System.out.println(cri.getKeyword());
+//			System.out.println(cri.getPage());
+//			System.out.println(cri.getSearchType());
+//			System.out.println(cri.getPerPageNum());
 			
 			pageMaker.setTotalCount(orderlogDAO.selectOrderlogSearchListCount(session, userId, cri));
 			System.out.println("totalcount 후");
@@ -89,6 +97,33 @@ public class OrderlogServiceImpl implements OrderlogService{
 			session.close();
 			
 		}
+		
+	}
+
+	@Override
+	public void regist(OrderlogVO orderlog,OrderlogDetailVO orderlogDetail) throws SQLException {
+		SqlSession session = sqlSessionFactory.openSession();
+		
+		try {
+			
+			int val = orderlogDAO.selectOrderlognextVal(session);
+			String orderId = "ORD"+val+new Date();
+			
+			System.out.println(orderId);
+			orderlog.setOrderId(orderId);
+			
+			orderlogDAO.insertOrderlog(session, orderlog);
+			
+			
+			int orderDetailNo = orderlogDetailDAO.selectOrderDetaillogNextVal(session);
+			orderlogDetail.setOrderDetailNo(orderDetailNo);
+			orderlogDetail.setOrderId(orderId);
+			orderlogDetailDAO.insertOrderlogDetail(session, orderlogDetail);
+			
+		}finally {
+			session.close();
+		}
+		 
 		
 	}
 	

@@ -21,7 +21,6 @@ public class OrderlogRegistFormHandler implements Handler {
 		
 //		MemberVO loginUser = (MemberVO) request.getSession().getAttribute("loginUser");
 //		String userId = loginUser.getId();
-
 		
 		String userId = "cdwcdw34";
 		

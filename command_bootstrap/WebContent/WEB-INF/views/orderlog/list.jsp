@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="cri" value="${pageMaker.cri }" />
+<c:set var="orderlogList" value="${dataMap.orderlogList }" />
 <head></head>
 
 <title>회원목록</title>
@@ -70,7 +71,7 @@
 		</div>
 		<!-- card -->
 		<c:forEach var="orderlog" items="${orderlogList }">
-			<div class="row">
+			<div class="row" >
 				<div class="col-sm-12">
 					<div class="card">
 						<div class="card-header"></div>
@@ -81,21 +82,18 @@
 									주문
 								</div>
 								<div class="col-sm-6">
-									<a href="" onclick="OpenWindow('detail.do?orderId=${orderlog.orderId}','','800','900')">주문 상세 보기></a>
+									${orderlog.orderId }
 								</div>
 							</div>
-
 							<div class="row">
 								<div class="col-sm-10">
 									<div class="card">
 										<div class="card-header">${orderlog.orderStatus }</div>
 										<div class="card-body">
-											<div>${orderlog.orderId }</div>
-											<div>${orderlog.prodId }</div>
-											<div>${orderlog.prodQty }</div>
+<%-- 											<div>${orderlog.orderId }</div> --%>
+<%-- 											<div>${orderlog.buyDate }</div> --%>
 											<div class="row">
 												<div class="col-sm-6">가격</div>
-												<div class="col-sm-6">장바구니담기</div>
 											</div>
 										</div>
 										<div class="card-footer"></div>
@@ -103,16 +101,18 @@
 								</div>
 								<div class="col-sm-2">
 									<div class="card">
-										<div class="card-body">
-											<div>
-												<button class="btn btn-primary " type="button" onclick="">배송조회</button>
+										<div class="card-body" style="text-align: center;">
+											<div class="row">
+<!-- 												<button class="btn btn-primary " type="button" onclick="">배송조회</button> -->
+												<button style="width: 100%" class="btn btn-primary " type="button" onclick="OpenWindow('detail.do?orderId=${orderlog.orderId}','','800','900')">상세조회</button>
 											</div>
-											<div>
-												<button class="btn btn-primary" type="button" onclick="">교환:반품</button>
+											<div style="height: 3px"></div>
+											<div class="row">
+												<button style="width: 100%"  class="btn btn-primary" type="button" onclick="">교환:반품</button>
 											</div>
-											<div>
-												<button class="btn btn-primary" type="button" onclick="">리뷰
-													작성</button>
+											<div style="height: 3px"></div>
+											<div class="row">
+												<button style="width: 100%"  class="btn btn-primary" type="button" onclick="">리뷰 작성</button>
 											</div>
 										</div>
 									</div>
