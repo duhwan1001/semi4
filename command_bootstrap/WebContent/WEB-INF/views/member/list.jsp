@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="cri" value="${pageMaker.cri }" />
+<c:set var="member" value="${memberList }"/>
 
 <head></head>
 
@@ -82,13 +83,13 @@
 		                	<th>등록날짜</th> <!-- yyyy-MM-dd  -->
 		               	</tr>
 		               	<c:forEach items="${memberList }" var="member" >
-		               	  <tr onclick="OpenWindow('detail.do?id=${member.id}','','800','900');" style="cursor:pointer;">
-		               		<td>${member.id }</td>
-		              		<td>${member.pwd }</td>
-		              		<td>${member.email }</td>
-		              		<td>${member.phone }</td>
+		               	  <tr onclick="OpenWindow('detail.do?id=${member.userId}','','800','900');" style="cursor:pointer;">
+		               		<td>${member.userId }</td>
+		              		<td>${member.userPw }</td>
+		              		<td>${member.userPhone }</td>
+		              		<td>${member.userName }</td>
 		              		<td>
-		              			<fmt:formatDate value="${member.regDate }" pattern="yyyy-MM-dd"/>
+		              			<fmt:formatDate value="${member.userRegdate }" pattern="yyyy-MM-dd"/>
 		              		</td>
 		              	  </tr>
 		               	</c:forEach>
