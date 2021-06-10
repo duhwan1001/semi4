@@ -4,6 +4,8 @@
 <script>
 function qtyMinus(targetObj, cartNo){
 	qtyValue = $(targetObj).next()[0].childNodes[1].innerHTML;
+	
+	if(qtyValue-1 < 1) return;
 	$(targetObj).next()[0].childNodes[1].innerHTML = qtyValue - 1;
 	
 	$.ajax({
