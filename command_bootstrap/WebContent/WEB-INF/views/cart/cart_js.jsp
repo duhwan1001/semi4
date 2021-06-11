@@ -68,9 +68,6 @@ function order_go(){
 		data:jsonData,	
 		contentType:'application/json',
 		success:function(data){
-		}
-		else{
-			
 		}	
 	});
 }
