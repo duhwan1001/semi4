@@ -104,7 +104,6 @@
 				</div>
 			</div>
 		</c:forEach>
-		<div>결제정보 안헐거</div>
 		<c:set var="list_url" value="list.do"></c:set>
 	</section>
 	<!-- content -->

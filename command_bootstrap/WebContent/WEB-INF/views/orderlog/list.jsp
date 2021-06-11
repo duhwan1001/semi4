@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+<c:set var="pageMaker" value="${pageMaker }" />
 <c:set var="cri" value="${pageMaker.cri }" />
 <c:set var="orderlogList" value="${dataMap.orderlogList }" />
 <head></head>
@@ -38,22 +40,14 @@
 						<h3>주문목록</h3>
 					</div>
 					<div class="input-group row">
-						<!-- 												<select class="form-control col-md-3" name="perPageNum" id="perPageNum" onchange="list_go(1,'list.do');"> -->
-						<!-- 													<option value="10">정렬개수</option> -->
-						<%-- 													<option value="2"${cri.perPageNum == 2 ? 'selected' : ''}>2개씩</option> --%>
-						<%-- 													<option value="3"${cri.perPageNum == 3 ? 'selected' : ''}>3개씩</option> --%>
-						<%-- 													<option value="5"${cri.perPageNum == 5 ? 'selected' : ''}>5개씩</option> --%>
-						<!-- 												</select> -->
-						<!-- 												<select class="form-control col-md-3" name="searchType" id="searchType"> -->
-						<!-- 							<option value="">주문상태</option>  -->
-						<%-- 							<option value="i" ${cri.searchType eq 's' ? 'selected' : ''}>주문상태</option>  --%>
-						<%-- 							<option value="p" ${cri.searchType eq 'd' ? 'selected' : ''}></option>  --%>
-						<!-- 						</select> -->
 						<input class="form-control" type="text" name="keyword"
-							placeholder="주문한 상품을 적어주세요" value="" /> <span
-							class="input-group-append">
+							placeholder="주문한 상품을 적어주세요" value="" /> 
+						<select class="form-control col-md-4" name="searchType" id="searchType" hidden="">
+							<option value="n"></option>
+						</select>	
+						<span class="input-group-append">
 							<button class="btn btn-primary" type="button" id="searchBtn"
-								data-card-widget="search" onclick="list_go(1,'list.do');">
+								data-card-widget="search" onclick="list_go(1);">
 								<i class="fa fa-fw fa-search"></i>
 							</button>
 						</span>
@@ -97,7 +91,15 @@
 <%-- 											<div>${orderlog.orderId }</div> --%>
 <%-- 											<div>${orderlog.buyDate }</div> --%>
 											<div class="row">
-												<div class="col-sm-6">가격</div>
+												<div class="col-sm-6">
+													<img width="30px" height="30px" src="/orderlog/getPicture.do?picture=${orderlogProd.prodImg}" class="img-circle elevation-2">
+												</div>
+												<div class="col-sm-6">${orderlog.prodName}</div>
+												<c:if test="${orderlog.cnt } > 1">
+												외 ${orderlog.cnt - 1}
+												</c:if>
+												
+												
 											</div>
 										</div>
 										<div class="card-footer"></div>

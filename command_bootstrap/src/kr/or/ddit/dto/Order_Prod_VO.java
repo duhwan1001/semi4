@@ -20,6 +20,15 @@ public class Order_Prod_VO {
 	private String prodClass;
 	private String prodWho;
 	private int prodQty;
+	
+	private int tmp; // orderID의 prod종류개수
+	
+	public int getTmp() {
+		return tmp;
+	}
+	public void setTmp(int tmp) {
+		this.tmp = tmp;
+	}
 	public int getOrderDetailNo() {
 		return orderDetailNo;
 	}

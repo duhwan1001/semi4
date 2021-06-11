@@ -15,6 +15,7 @@ import kr.or.ddit.dao.OrderlogDAO;
 import kr.or.ddit.dao.OrderlogDetailDAO;
 import kr.or.ddit.dto.OrderlogDetailVO;
 import kr.or.ddit.dto.OrderlogVO;
+import kr.or.ddit.dto.Orderlog_Prod_VO;
 
 public class OrderlogServiceImpl implements OrderlogService{
 
@@ -40,15 +41,11 @@ public class OrderlogServiceImpl implements OrderlogService{
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
-//			System.out.println(cri.getKeyword());
-//			System.out.println(cri.getPage());
-//			System.out.println(cri.getSearchType());
-//			System.out.println(cri.getPerPageNum());
 			
 			pageMaker.setTotalCount(orderlogDAO.selectOrderlogSearchListCount(session, userId, cri));
 			Map<String, Object> dataMap = new HashMap<String, Object>();
 			
-			List<OrderlogVO> orderlogList = orderlogDAO.selectOrderlogSearchList(session, userId, cri);
+			List<Orderlog_Prod_VO> orderlogList = orderlogDAO.selectOrderlogSearchList(session, userId, cri);
 			
 			dataMap.put("orderlogList", orderlogList);
 			dataMap.put("pageMaker", pageMaker);

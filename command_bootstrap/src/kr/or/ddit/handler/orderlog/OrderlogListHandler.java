@@ -1,5 +1,6 @@
 package kr.or.ddit.handler.orderlog;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,17 +23,18 @@ public class OrderlogListHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("handler 진입");
+		System.out.println("list handler 진입");
 		String url="orderlog/list";
 		
-//		String page = request.getParameter("page");
-//		String perPageNum = request.getParameter("perPageNum");
-//		String keyword = request.getParameter("keyword");
-//		String searchType = request.getParameter("searchType");
-		String page = "1";
-		String perPageNum = "10";
+		String page = request.getParameter("page");
+		String perPageNum = request.getParameter("perPageNum");
 		String keyword = request.getParameter("keyword");
 		String searchType = request.getParameter("searchType");
+		
+		System.out.println(page);
+		System.out.println(perPageNum);
+		System.out.println(keyword);
+		System.out.println(searchType);
 		
 		
 		SearchCriteria cri = new SearchCriteria();
@@ -44,13 +46,14 @@ public class OrderlogListHandler implements Handler {
 
 //		String userId = request.getParameter("userId");
 		String userId = "cdwcdw34";
-		
+		try {
 		Map<String, Object> dataMap = orderlogService.getOrderlogList(userId, cri);
 		request.setAttribute("dataMap", dataMap);
-//		request.setAttribute("orderlogList", dataMap.get("orderlogList"));
 		request.setAttribute("pageMaker", dataMap.get("pageMaker"));
-
-		
+		}catch(SQLException e) {
+			e.printStackTrace();
+			url = null;
+		}
 		return url;
 	}
 

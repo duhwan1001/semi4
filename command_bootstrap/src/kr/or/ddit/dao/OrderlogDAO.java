@@ -7,10 +7,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.command.SearchCriteria;
 import kr.or.ddit.dto.OrderlogVO;
+import kr.or.ddit.dto.Orderlog_Prod_VO;
 
 public interface OrderlogDAO {
 	
-	List<OrderlogVO> selectOrderlogSearchList(SqlSession session, String userId, SearchCriteria cri) throws SQLException;
+	List<Orderlog_Prod_VO> selectOrderlogSearchList(SqlSession session, String userId, SearchCriteria cri) throws SQLException;
 	
 	int selectOrderlogSearchListCount(SqlSession session, String userId, SearchCriteria cri) throws SQLException;
 	

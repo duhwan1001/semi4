@@ -4,59 +4,78 @@
 <mapper namespace="Orderlog-Mapper">
 
 	<sql id="search">
+<!-- 		<if test="searchType == 'n'.toString()"> -->
+<!-- 			and PROD_NAME like '%'||#{keyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		<if test="searchType == 's'.toString()"> -->
+<!-- 			and ORDER_STATUS like '%'||#{keyword}||'%' -->
+<!-- 		</if> -->
+	</sql>
+<!-- 		<if test="searchType == 'd'.toString()"> -->
+<!-- 			and BUY_DATE like '%'||#{keyword}||'%' -->
+<!-- 		</if> -->
+	
+
+	<select id="selectSearchOrderlogListCount" resultType="int">	
+			SELECT count(o.order_id)
+			FROM ORDER_LOG o
+			inner join (
+			select min(order_detail_no) as order_detail_no, order_id, prod_id
+			from order_log_detail
+			group by ORDER_ID, prod_id
+			) D
+			on O.ORDER_ID = D.ORDER_ID
+			inner join product p
+			on d.PROD_ID = P.PROD_ID
+			WHERE USER_ID = #{loginUserId}
+		<if test="searchType == 'n'.toString()">
+			and PROD_NAME like '%'||#{keyword}||'%'
+		</if>
 		<if test="searchType == 's'.toString()">
 			and ORDER_STATUS like '%'||#{keyword}||'%'
 		</if>
-		<if test="searchType == 'd'.toString()">
-			and BUY_DATE like '%'||#{keyword}||'%'
-		</if>
-	</sql>
-	
-
-
-	
-
-	<select id="selectSearchOrderlogListCount" resultType="int">
-		SELECT
-		COUNT(*)
-		FROM ORDER_LOG
-		WHERE USER_ID = #{userId}
-<!-- 		<include refid="search" /> -->
-		ORDER BY ORDER_ID DESC
+			ORDER BY o.ORDER_ID DESC
 	</select>
 	
-	<select id="selectSearchOrderlogDetailListCount" resultType="int">
-<!-- 		SELECT -->
-<!-- 		COUNT(*) -->
-<!-- 		FROM ORDER_LOG_DETAIL -->
-<!-- 		WHERE ORDER_ID = #{orderId} -->
-<!-- 		<include refid="search" /> -->
-		ORDER BY ORDER_ID DESC
-		SELECT COUNT(O.ORDER_ID)
-		FROM ORDER_LOG o
-        inner join order_log_detail d
-        on O.ORDER_ID = D.ORDER_ID
-        inner join product p
-        on d.PROD_ID = P.PROD_ID
-        WHERE USER_ID = #{userId}
-<!--         AND P.PROD_NAME = '123' -->
-		ORDER BY o.ORDER_ID DESC
-	</select>
+<!-- 	<select id="selectSearchOrderlogDetailListCount" resultType="int"> -->
+<!-- 		SELECT COUNT(O.ORDER_ID) -->
+<!-- 		FROM ORDER_LOG o -->
+<!--         inner join order_log_detail d -->
+<!--         on O.ORDER_ID = D.ORDER_ID -->
+<!--         inner join product p -->
+<!--         on d.PROD_ID = P.PROD_ID -->
+<!--         WHERE USER_ID = #{loginUserId} -->
+<!-- 		<if test="searchType == 'n'.toString()"> -->
+<!-- 			and PROD_NAME like '%'||#{keyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		<if test="searchType == 's'.toString()"> -->
+<!-- 			and ORDER_STATUS like '%'||#{keyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		ORDER BY o.ORDER_ID DESC -->
+<!-- 	</select> -->
 	
-	<select id="selectSearchOrderlogList" resultType="orderlog">
-<!-- 		SELECT *  -->
-<!-- 		FROM ORDER_LOG -->
-<!-- 		WHERE USER_ID = #{userId} -->
-<!-- 		ORDER BY ORDER_ID DESC -->
-		SELECT o.*
-		FROM ORDER_LOG o
-        inner join order_log_detail d
-        on O.ORDER_ID = D.ORDER_ID
-        inner join product p
-        on d.PROD_ID = P.PROD_ID
-        WHERE USER_ID = #{userId}
-<!--         AND P.PROD_NAME = '123' -->
-		ORDER BY o.ORDER_ID DESC
+	<select id="selectSearchOrderlogList" resultType="orderlogprod">
+        	SELECT o.*, P.PROD_IMG, d.prod_id, D.ORDER_DETAIL_NO, D.cnt as tmp
+			FROM ORDER_LOG o
+				inner join (
+						select a.*, b.prod_Id
+						from (
+							select min(order_detail_no) as order_detail_no, count(*) cnt, order_id
+       						from order_log_detail
+							group by ORDER_ID) a
+						inner join order_log_detail b
+						on A.ORDER_DETAIL_NO = B.ORDER_DETAIL_NO) D
+				on O.ORDER_ID = D.ORDER_ID
+				inner join product p
+				on d.PROD_ID = P.PROD_ID
+				WHERE USER_ID = #{loginUserId}
+			<if test="searchType == 'n'.toString()">
+				and PROD_NAME like '%'||#{keyword}||'%'
+			</if>
+			<if test="searchType == 's'.toString()">
+				and ORDER_STATUS like '%'||#{keyword}||'%'
+			</if>
+			ORDER BY o.ORDER_ID DESC
 	</select>
 	
 	<select id="selectOrderlogListByOrderId" resultType="orderlog">
@@ -64,7 +83,6 @@
 		FROM ORDER_LOG
 		WHERE ORDER_ID = #{orderId}
 	</select>
-	
 	
 	<select id="selectOrderlogDetailListByOrderId" resultType="orderlogprod">
 		SELECT 
