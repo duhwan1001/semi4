@@ -221,7 +221,7 @@
 						</tr>
 					</c:if>						
 					<c:forEach items="${cartList }" var="cart">
-						<tr style='font-size:0.85em;'>
+						<tr style='font-size:0.85em;' name="prodIdArr" id="${cart.prod_id }">
 							<td><input type="checkbox" name="price" id="${cart.prod_cost }" onclick="totalPrice()" checked></td>
 							<td><img src="/prod/getPicture.do?picture=${cart.prod_img}" style="width: 200px;"></td>
 							<td><h4>${cart.prod_name }</h4></td>
@@ -231,7 +231,7 @@
 								<div class="codr_amount">
 									<a href="javascript:void(0);" role="button" class="codr_b_minus payTracking" name="btUpdOrdQtyMinus" onclick="qtyMinus(this, '${cart.cart_no}')"><span aria-hidden="true">-</span><span class="blind"></span></a>
 									<span class="codr_inpbx">
-										<span class="codr_amount_qty">${cart.prod_qty }</span>
+										<span class="codr_amount_qty" name="qtyArr">${cart.prod_qty }</span>
 									</span>
 									<a href="javascript:void(0);" role="button" class="codr_b_plus payTracking" name="btUpdOrdQtyPlus" onclick="qtyPlus(this, '${cart.cart_no}')"><span aria-hidden="true">+</span><span class="blind"></span></a>
 								</div>
@@ -246,7 +246,7 @@
 				<h1>주문합계 : <span id="totalPrice">0</span>원</h1>		
 			</div>
 			<div class="card-footer">
-				<button type="button" class="btn btn-primary" id="orderBtn" onclick=""
+				<button type="button" class="btn btn-primary" id="orderBtn" onclick="order_go()"
 					style="margin: 0 auto; display: block; margin-bottom: 15px;">주문하기</button>				
 				<%@ include file="/WEB-INF/views/common/pagination.jsp" %>				
 			</div>
@@ -264,6 +264,7 @@ window.onload = function(){
 }
 </script>
 </c:if>
+
 </body>
 
 

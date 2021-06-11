@@ -46,4 +46,32 @@ function qtyPlus(targetObj, cartNo){
      });
 }
 
+function order_go(){
+	var orderList = new Array();
+	$("input[name=price]").each(function(idx){ 
+		if($(this).is(":checked") == true) {
+			prodId = $("[name=prodIdArr]")[idx];
+			pId = $(prodId).attr('id');
+			qty = $("[name=qtyArr]")[idx].innerHTML;
+			var data = new Object();
+			data.prodId = pId;
+			data.prodQty = qty;
+			orderList.push(data);
+		}
+	}); 
+	var jsonData = JSON.stringify(orderList) ;
+	console.log(jsonData) ;
+	
+	$.ajax({
+		url:"/orderlog/modify.do",
+		type:"post",
+		data:jsonData,	
+		contentType:'application/json',
+		success:function(data){
+		}
+		else{
+			
+		}	
+	});
+}
 </script>
