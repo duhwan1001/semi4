@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse
 
+# ignore all files in the build/ directory
+build/
+
 ### Eclipse ###
 .metadata
 bin/
