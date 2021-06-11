@@ -4,7 +4,7 @@
 <beans>
 	<!-- dataSource -->
 	<bean id="sqlSessionFactory" class="kr.or.ddit.mybatis.OracleMyBatisSqlSessionFactory" />
-	
+	 
 
 	<!-- Repository Layer -->
 	<bean id="menuDAO"  class="kr.or.ddit.dao.MenuDAOImpl" />
@@ -31,11 +31,6 @@
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="cartDAO" ref-value="cartDAO"/>
 	</bean>
-
-
-
-
-
 
 	<bean id="orderlogService" class="kr.or.ddit.service.OrderlogServiceImpl">
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
