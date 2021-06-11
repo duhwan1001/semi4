@@ -59,7 +59,7 @@
 							 <label for="id" class="col-sm-3" style="font-size:0.9em;" >
 							 	<span style="color:red;font-weight:bold;">*</span>아이디</label>	
 							<div class="col-sm-9 input-group input-group-sm">
-								<input name="id" 
+								<input name="userid" 
 									onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, &#39;&#39;);"
 								type="text" class="form-control" id="id" placeholder="13글자 영문자,숫자 조합">
 								<span class="input-group-append-sm">	
@@ -71,7 +71,7 @@
 							<label for="pwd" class="col-sm-3" style="font-size:0.9em;">
 								<span style="color:red;font-weight:bold;">*</span>패스워드</label>
 							<div class="col-sm-9 input-group-sm">								
-								<input class="form-control" name="pwd" type="password" class="form-control" id="pwd"
+								<input class="form-control" name="userpw" type="password" class="form-control" id="pwd"
 										placeholder="20글자 영문자,숫자,특수문자 조합" />
 							</div>
 							
@@ -80,7 +80,7 @@
 							<label for="name" class="col-sm-3" style="font-size:0.9em;">
 								<span style="color:red;font-weight:bold;">*</span>이 름</label>
 							<div class="col-sm-9 input-group-sm">								
-								<input class="form-control" name="name" type="text" class="form-control" id="name"
+								<input class="form-control" name="username" type="text" class="form-control" id="name"
 										placeholder="이름을 입력하세요" />
 							</div>
 							
@@ -88,20 +88,12 @@
 						<div class="form-group row">
 							<label for="authority" class="col-sm-3" style="font-size:0.9em;" >권 한</label>
 							<div class="col-sm-9">
-								<select name="authority" class="form-control" style="font-size:0.9em;">
-									<option value="ROLE_USER">사용자</option>
-									<option value="ROLE_MANAGER">운영자</option>
-									<option value="ROLE_ADMIN">관리자</option>
+								<select name="userrole" class="form-control" style="font-size:0.9em;">
+									<option value="USER">사용자</option>
+									<option value="ADMIN">관리자</option>
 								</select>
 							</div>
 						</div>					
-						<div class="form-group row">
-							<label for="email" class="col-sm-3" style="font-size:0.9em;">이메일</label>
-							<div class="col-sm-9 input-group-sm">
-								<input name="email" type="email" class="form-control" id="email"
-										placeholder="example@naver.com">
-							</div>
-						</div>
 						<div class="form-group row">
 							<label for="phone" class="col-sm-3 control-label">전화번호</label>
 							<div class="col-sm-9">	

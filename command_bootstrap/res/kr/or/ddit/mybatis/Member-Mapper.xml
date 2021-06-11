@@ -5,29 +5,26 @@
 	
 	<sql id="search">	
 		<if test="searchType == 'i'.toString()">
-			and id like '%'||#{keyword}||'%'			
+			and userid like '%'||#{keyword}||'%'			
 		</if>
 		<if test="searchType == 'p'.toString()">
-			and phone like '%'||#{keyword}||'%'			
+			and userphone like '%'||#{keyword}||'%'			
 		</if>
-		<if test="searchType == 'e'.toString()">
-			and email like '%'||#{keyword}||'%'			
-		</if>		
 	</sql>	
 	
 	<select id="selectSearchMemberList" resultType="member">
 		select
 		* 
-		from member
-		where id is not null
+		from shopuser
+		where userid is not null
 		<include refid="search" />
-		order by regDate desc
+		order by userregDate desc
 	</select>
 	<select id="selectSearchMemberListCount" resultType="int">
 		select
 		count(*) 
-		from member
-		where id is not null
+		from shopuser
+		where userid is not null
 		<include refid="search" />
 	</select>
 	
@@ -36,23 +33,23 @@
 		select 
 		* 
 		from shopuser 
-		where userid = #{id}
+		where userId = #{userId}
 	</select>
 	
 	<select id="selectMemberList" resultType="member">
 		select
 		* 
-		from member
+		from shopuser
 	</select>
 	
 	<update id="insertMember" parameterType="member">
-		insert into 
-		member(id, pwd, email, phone,picture,name,authority)
-		values(#{id},#{pwd},#{email},#{phone},#{picture},#{name},#{authority})
+	insert into
+	SHOPUSER(userId, userPw, userPicture, userPhone,userName,userRegdate,userOwncost,userRole)
+	values(#{userId},#{userPw},#{userPicture},#{userPhone},#{userName},sysdate,0,#{userRole})
 	</update>	
 	
 	<update id="updateMember" parameterType="member">
-		update member 
+		update shopuser 
 		set 
 		pwd=#{pwd},email=#{email},phone=#{phone},name=#{name},
 		picture=#{picture}
@@ -68,19 +65,19 @@
 	<update id="deleteMember" parameterType="str" >
 		delete 
 		from member 
-		where id=#{id}		
+		where userid=#{id}		
 	</update>
 	
 	<update id="disabledMember" >
 		update member 
 		set enabled=0
-		where id=#{id}
+		where userid=#{id}
 	</update>
 	
 	<update id="enabledMember">
 		update member
 		set enabled=1
-		where id=#{id}
+		where userid=#{id}
 	</update>
 </mapper>
 

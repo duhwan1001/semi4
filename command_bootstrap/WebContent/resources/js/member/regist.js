@@ -90,7 +90,7 @@ var checkedID=""
 
    function idCheck_go(){
       
-      var input_ID=$('input[name="id"]');
+      var input_ID=$('input[name="userid"]');
       
       if(input_ID.val()==""){
          alert("아이디를 입력하시오");
@@ -101,9 +101,9 @@ var checkedID=""
          
          //아이디는 4~12자의 영문자와 숫자로만 입력
          var reqID=/^[a-z]{1}[a-zA-Z0-9]{3,12}$/;
-         if(!reqID.test($('input[name="id"]').val())){
+         if(!reqID.test($('input[name="userid"]').val())){
             alert("아이디는 첫글자는 영소문자이며, \n 4~13자의 영문자와 숫자로만 입력해야합니다");
-            $('input[name="id"]').focus();
+            $('input[name="userid"]').focus();
             return;
          }
          
@@ -117,11 +117,11 @@ var checkedID=""
                console.log(result);
                if(result == "duplicated"){
                   alert("중복된 아이디 입니다.");
-                  $('input[name="id"]').focus();
+                  $('input[name="userid"]').focus();
                }else{
                   alert("사용가능한 아이디 입니다.");
                   checkedID=input_ID.val().trim();
-                  $('input[name="id"]').val(input_ID.val().trim());
+                  $('input[name="userid"]').val(input_ID.val().trim());
                
                }
             
@@ -146,22 +146,22 @@ function regist_go(){
       return;
    }
    
-   if($('input[name="id"]').val() == ""){
+   if($('input[name="userid"]').val() == ""){
       alert("아이디는 필수입니다.");
        return;
    }
    
-   if($('input[name="id"]').val()!=checkedID){
+   if($('input[name="userid"]').val()!=checkedID){
       alert("아이디는 중복 확인이 필요합니다.");
       return;
    }
    
-   if($('input[name="pwd"]').val()==""){
+   if($('input[name="userpw"]').val()==""){
       alert("패스워드는 필수입니다.");
       return;
    }
    
-   if($('input[name="name"]').val()==""){
+   if($('input[name="username"]').val()==""){
       alert("이름은 필수입니다.");
       return;
    }

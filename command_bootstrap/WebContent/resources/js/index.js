@@ -1,3 +1,10 @@
+window.onload=function(){
+	if($('span[id="roleCheck"]').html() != "ADMIN"){
+		$("a[mlevel='1']").attr('style','display:none');
+	}
+}
+
+
 
 function subMenu(mcode){
 	if(mcode!="M000000"){

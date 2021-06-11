@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="cri" value="${pageMaker.cri }" />
+<c:set var="member" value="${memberList }"/>
 
 <head></head>
 
@@ -56,8 +57,7 @@
 							<option value=""  ${cri.searchType eq '' ? 'selected':''}>검색구분</option>
 							<option value="i"  ${cri.searchType eq 'i' ? 'selected':''}>아이디</option>
 							<option value="p"  ${cri.searchType eq 'p' ? 'selected':''}>전화번호</option>
-							<option value="e"  ${cri.searchType eq 'e' ? 'selected':''}>이메일</option>
-						</select>
+							</select>
 						<input  class="form-control" type="text" name="keyword" 
 										placeholder="검색어를 입력하세요." value="${cri.keyword }"/>
 						<span class="input-group-append">
@@ -77,18 +77,18 @@
 		    			<tr>
 		                	<th>아이디</th>
 		                	<th>패스워드</th>
-		                	<th>이메일</th>
 		                	<th>전화번호</th>
+		                	<th>이름</th>
 		                	<th>등록날짜</th> <!-- yyyy-MM-dd  -->
 		               	</tr>
 		               	<c:forEach items="${memberList }" var="member" >
-		               	  <tr onclick="OpenWindow('detail.do?id=${member.id}','','800','900');" style="cursor:pointer;">
-		               		<td>${member.id }</td>
-		              		<td>${member.pwd }</td>
-		              		<td>${member.email }</td>
-		              		<td>${member.phone }</td>
+		               	  <tr onclick="OpenWindow('detail.do?id=${member.userId}','','800','900');" style="cursor:pointer;">
+		               		<td>${member.userId }</td>
+		              		<td>${member.userPw }</td>
+		              		<td>${member.userPhone }</td>
+		              		<td>${member.userName }</td>
 		              		<td>
-		              			<fmt:formatDate value="${member.regDate }" pattern="yyyy-MM-dd"/>
+		              			<fmt:formatDate value="${member.userRegdate }" pattern="yyyy-MM-dd"/>
 		              		</td>
 		              	  </tr>
 		               	</c:forEach>

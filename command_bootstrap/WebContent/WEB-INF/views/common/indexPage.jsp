@@ -17,7 +17,7 @@
  	<%@ include file="/WEB-INF/views/include/main_aside.jsp" %>
  	
  	<div class="content-wrapper" style="background-color:#fff;">
-	 	<iframe name="ifr" src="/main.do" frameborder="0" style="width:100%;height:80vh;"></iframe>
+	 	<iframe name="ifr" src="/main.do" frameborder="0" style="width:100%;height:95vh;"></iframe>
  	</div>
  	
 	<%@ include file="/WEB-INF/views/include/main_footer.jsp" %>
@@ -32,7 +32,7 @@
 <script type="text/x-handlebars-template"  id="subMenu-list-template" >
 {{#each .}}
 	<li class="nav-item subMenu" >
-      	<a href="javascript:goPage('{{murl}}','{{mcode}}');" class="nav-link">
+      	<a href="javascript:goPage('{{murl}}','{{mcode}}');initPageParam();" class="nav-link">
           <i class="{{micon}}"></i>
              <p>{{mname}}</p>
         </a>

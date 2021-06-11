@@ -4,12 +4,13 @@
 <beans>
 	<!-- dataSource -->
 	<bean id="sqlSessionFactory" class="kr.or.ddit.mybatis.OracleMyBatisSqlSessionFactory" />
-	
+	 
 
 	<!-- Repository Layer -->
 	<bean id="menuDAO"  class="kr.or.ddit.dao.MenuDAOImpl" />
 	<bean id="memberDAO" class="kr.or.ddit.dao.MemberDAOImpl" />
 	<bean id="noticeDAO" class="kr.or.ddit.dao.NoticeDAOImpl" />
+	<bean id="cartDAO" class="kr.or.ddit.dao.CartDAOImpl" />
 	<bean id="orderlogDAO" class="kr.or.ddit.dao.OrderlogDAOImpl"/>
 	<bean id="orderlogDetailDAO" class="kr.or.ddit.dao.OrderlogDetailDAOImpl"/>
 	
@@ -26,11 +27,10 @@
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="noticeDAO" ref-value="noticeDAO"/>
 	</bean>
-
-
-
-
-
+	<bean id="cartService" class="kr.or.ddit.service.CartServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="cartDAO" ref-value="cartDAO"/>
+	</bean>
 
 	<bean id="orderlogService" class="kr.or.ddit.service.OrderlogServiceImpl">
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
