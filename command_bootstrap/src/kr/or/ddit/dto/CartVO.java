@@ -3,7 +3,7 @@ package kr.or.ddit.dto;
 public class CartVO {
 	private int cart_no;
 	private String user_id; 
-	private String prod_id; // 상품 ID
+	private int prod_id; // 상품 ID
 	private int prod_qty; // 고객이 고른 수량
 	private String prod_img;
 	private String prod_name;
@@ -22,10 +22,10 @@ public class CartVO {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getProd_id() {
+	public int getProd_id() {
 		return prod_id;
 	}
-	public void setProd_id(String prod_id) {
+	public void setProd_id(int prod_id) {
 		this.prod_id = prod_id;
 	}
 	public int getProd_qty() {
@@ -51,6 +51,11 @@ public class CartVO {
 	}
 	public void setProd_cost(int prod_cost) {
 		this.prod_cost = prod_cost;
+	}
+	@Override
+	public String toString() {
+		return "CartVO [cart_no=" + cart_no + ", user_id=" + user_id + ", prod_id=" + prod_id + ", prod_qty=" + prod_qty
+				+ ", prod_img=" + prod_img + ", prod_name=" + prod_name + ", prod_cost=" + prod_cost + "]";
 	}
 	
 	

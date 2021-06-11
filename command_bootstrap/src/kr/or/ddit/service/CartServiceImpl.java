@@ -53,4 +53,26 @@ public class CartServiceImpl implements CartService{
 		}		
 	}
 
+	@Override
+	public void cartDeleteItem(int cartNo) throws SQLException {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+
+			cartDAO.deleteCartItem(session, cartNo);
+		} finally {
+			session.close();
+		}		
+	}
+
+	@Override
+	public void cartInsertItem(CartVO cart) {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+
+			cartDAO.insertCartItem(session, cart);
+		} finally {
+			session.close();
+		}	
+	}
+
 }

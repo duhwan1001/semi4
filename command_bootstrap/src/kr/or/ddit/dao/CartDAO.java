@@ -16,4 +16,10 @@ public interface CartDAO {
 	
 	// 장바구니 수량 빼기
 	void updateQtyMinus(SqlSession session, int cartNo) throws SQLException;
+	
+	// 장바구니 아이템 삭제
+	void deleteCartItem(SqlSession session, int cartNo) throws SQLException;
+	
+	// 장바구니 아이템 추가
+	void insertCartItem(SqlSession session, CartVO cart) throws SQLException;
 }

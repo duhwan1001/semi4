@@ -12,4 +12,8 @@ public interface CartService {
 	void cartQtyPlus(int cartNo) throws SQLException;
 	
 	void cartQtyMinus(int cartNo) throws SQLException;
+	
+	void cartInsertItem(CartVO cart);
+	
+	void cartDeleteItem(int cartNo) throws SQLException;
 }

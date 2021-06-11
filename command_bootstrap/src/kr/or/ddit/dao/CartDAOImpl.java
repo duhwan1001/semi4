@@ -13,7 +13,6 @@ public class CartDAOImpl implements CartDAO{
 	public List<CartVO> selectCartList(SqlSession session, String userId) throws SQLException {
 		List<CartVO> cartList =
 				session.selectList("Cart-Mapper.selectCartById", userId);
-		
 		return cartList;
 	}
 
@@ -25,6 +24,16 @@ public class CartDAOImpl implements CartDAO{
 	@Override
 	public void updateQtyMinus(SqlSession session, int cartNo) throws SQLException {
 		session.update("Cart-Mapper.updateQtyMinus",cartNo);
+	}
+
+	@Override
+	public void deleteCartItem(SqlSession session, int cartNo) throws SQLException {
+		session.update("Cart-Mapper.deleteCartItem",cartNo);
+	}
+
+	@Override
+	public void insertCartItem(SqlSession session, CartVO cart) throws SQLException {
+		session.update("Cart-Mapper.insertCartItem",cart);
 	}
 
 }

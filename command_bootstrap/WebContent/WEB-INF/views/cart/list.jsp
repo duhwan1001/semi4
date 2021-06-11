@@ -222,7 +222,7 @@
 					</c:if>						
 					<c:forEach items="${cartList }" var="cart">
 						<tr style='font-size:0.85em;'>
-							<td><input type="checkbox"></td>
+							<td><input type="checkbox" name="price" id="${cart.prod_cost }" onclick="totalPrice()" checked></td>
 							<td></td>
 							<td>${cart.prod_name }</td>
 							<td>${cart.prod_cost }</td>
@@ -237,14 +237,17 @@
 								</div>
 							</div>
 							</td>
-							<td>삭제하기</td>
+							<td><a href="/cart/cartDeleteItem.do?cartNo=${cart.cart_no}">삭제하기</a></td>
 						</tr>
 					</c:forEach>
 				</table>				
 			</div>
 			<div class="card-footer">
+				<h1>주문합계 : <span id="totalPrice">0</span>원</h1>		
+			</div>
+			<div class="card-footer">
 				<button type="button" class="btn btn-primary" id="orderBtn" onclick=""
-					style="margin: 0 auto; display: block; margin-bottom: 15px">주문하기</button>				
+					style="margin: 0 auto; display: block; margin-bottom: 15px;">주문하기</button>				
 				<%@ include file="/WEB-INF/views/common/pagination.jsp" %>				
 			</div>
 		</div>
@@ -254,6 +257,13 @@
 
 <script src="/resources/js/common.js" ></script>
  <%@ include file="./cart_js.jsp" %>
+<c:if test="${!empty cartList }" >
+<script>
+window.onload = function(){
+	totalPrice()
+}
+</script>
+</c:if>
 </body>
 
 

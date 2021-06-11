@@ -10,6 +10,10 @@
 		where c.PROD_ID = p.PROD_ID AND c.user_id = #{id}
 	</select>
 	
+	<update id="insertCartItem">
+		insert into cart(CART_NO,USER_ID,PROD_ID,PROD_QTY) values(CART_SEQ.nextval, #{id}, #{prodId}, #{prodQty})
+	</update>
+	
 	<update id="updateQtyPlus">
 		update cart
 		set prod_qty = prod_qty + 1
@@ -22,7 +26,7 @@
 		where cart_no = #{cartNo}
 	</update>
 	
-	<delete id="deleteCart">
+	<delete id="deleteCartItem">
 		delete
 		from cart
 		where cart_no = #{cartNo}

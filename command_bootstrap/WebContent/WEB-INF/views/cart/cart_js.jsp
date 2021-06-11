@@ -2,6 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <script>
+function totalPrice(){
+	var total = 0;
+	$("input[name=price]").each(function(idx){ 
+		if($(this).is(":checked") == true) {
+			var qty = $(this).parent().nextAll()[3].childNodes[1].childNodes[1].childNodes[3].childNodes[1].innerHTML;
+	        var price = $(this).attr('id');
+	        total += parseInt(price * qty);
+		}
+	});
+	$("#totalPrice").html(total);
+}
 function qtyMinus(targetObj, cartNo){
 	qtyValue = $(targetObj).next()[0].childNodes[1].innerHTML;
 	
@@ -12,7 +23,7 @@ function qtyMinus(targetObj, cartNo){
         url : "/cart/cartQtyMinus.do?cartNo="+cartNo,
         method : "post",
         success : function(result){
-        
+        	totalPrice()
         },
         error:function(error){
            alert("시스템장애로 수정 불가합니다.");
@@ -27,11 +38,12 @@ function qtyPlus(targetObj, cartNo){
         url : "/cart/cartQtyPlus.do?cartNo="+cartNo,
         method : "post",
         success : function(result){
-        
+        	totalPrice()
         },
         error:function(error){
            alert("시스템장애로 수정 불가합니다.");
         }
      });
 }
+
 </script>
