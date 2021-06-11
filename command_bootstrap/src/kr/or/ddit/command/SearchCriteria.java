@@ -4,9 +4,16 @@ public class SearchCriteria extends Criteria {
 
 	private String searchType=""; // 검색구분
 	private String keyword=""; //검색어
+	private String loginUserId=""; //로그인유저아이디
 	
 	
 	
+	public String getLoginUserId() {
+		return loginUserId;
+	}
+	public void setLoginUserId(String loginUserId) {
+		this.loginUserId = loginUserId;
+	}
 	public String getSearchType() {
 		return searchType;
 	}

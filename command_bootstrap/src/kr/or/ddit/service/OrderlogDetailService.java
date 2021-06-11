@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.command.SearchCriteria;
+import kr.or.ddit.dto.Order_Prod_VO;
 import kr.or.ddit.dto.OrderlogDetailVO;
-import kr.or.ddit.dto.Orderlog_Prod_VO;
 
 public interface OrderlogDetailService {
 	
@@ -16,9 +16,9 @@ public interface OrderlogDetailService {
 
 	void modify(OrderlogDetailVO orderlogDetail) throws SQLException;
 	
-	List<Orderlog_Prod_VO> getOrderlogDetailListByOrderId(String orderId) throws SQLException;
+	List<Order_Prod_VO> getOrderlogDetailListByOrderId(String orderId) throws SQLException;
 	
 	void regist(OrderlogDetailVO orderlogDetail)throws SQLException;
 	
-	void modifyDetail(Orderlog_Prod_VO orderlogProd)throws SQLException;
+	void modifyDetail(Order_Prod_VO orderlogProd)throws SQLException;
 }

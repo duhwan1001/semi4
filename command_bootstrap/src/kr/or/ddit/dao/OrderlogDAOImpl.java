@@ -7,13 +7,13 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.command.SearchCriteria;
+import kr.or.ddit.dto.Order_Prod_VO;
 import kr.or.ddit.dto.OrderlogVO;
-import kr.or.ddit.dto.Orderlog_Prod_VO;
 
 public class OrderlogDAOImpl implements OrderlogDAO {
 
 	@Override
-	public List<Orderlog_Prod_VO> selectOrderlogSearchList(SqlSession session, String userId,  SearchCriteria cri) throws SQLException {
+	public List<Order_Prod_VO> selectOrderlogSearchList(SqlSession session, String userId,  SearchCriteria cri) throws SQLException {
 
 		int offset = cri.getStartRowNum();
 		int limit = cri.getPerPageNum();
@@ -24,7 +24,7 @@ public class OrderlogDAOImpl implements OrderlogDAO {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		List<Orderlog_Prod_VO> orderList = session.selectList("Orderlog-Mapper.selectSearchOrderlogList",cri, rowBounds);
+		List<Order_Prod_VO> orderList = session.selectList("Orderlog-Mapper.selectSearchOrderlogList",cri, rowBounds);
 		
 		return orderList;
 	}

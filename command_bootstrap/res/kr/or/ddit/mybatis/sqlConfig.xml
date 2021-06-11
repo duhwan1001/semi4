@@ -22,7 +22,7 @@
 		<typeAlias type="kr.or.ddit.dto.CartVO" alias="cart" />
 		<typeAlias type="kr.or.ddit.dto.OrderlogVO" alias="orderlog" />
 		<typeAlias type="kr.or.ddit.dto.OrderlogDetailVO" alias="orderlogdetail" />
-		<typeAlias type="kr.or.ddit.dto.Orderlog_Prod_VO" alias="orderlogprod" />
+		<typeAlias type="kr.or.ddit.dto.Order_Prod_VO" alias="orderlogprod" />
 	</typeAliases>
 	
 	
@@ -46,7 +46,7 @@
 		<mapper resource="kr/or/ddit/mybatis/Member-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Notice-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Cart-Mapper.xml"/>
-		<mapper resource="kr/or/ddit/mybatis/Orderlog-Mapper.xml"/>
+ 		<mapper resource="kr/or/ddit/mybatis/Orderlog-Mapper.xml"/>
 	</mappers>
 </configuration>
 

@@ -7,8 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.command.SearchCriteria;
+import kr.or.ddit.dto.Order_Prod_VO;
 import kr.or.ddit.dto.OrderlogDetailVO;
-import kr.or.ddit.dto.Orderlog_Prod_VO;
 
 public class OrderlogDetailDAOImpl implements OrderlogDetailDAO {
 
@@ -38,8 +38,8 @@ public class OrderlogDetailDAOImpl implements OrderlogDetailDAO {
 	}
 
 	@Override
-	public List<Orderlog_Prod_VO> selectOrderlogDetailListByOrderId(SqlSession session, String orderId) throws SQLException {
-		List<Orderlog_Prod_VO> orderlogList = session.selectList("Orderlog-Mapper.selectOrderlogDetailListByOrderId",orderId);
+	public List<Order_Prod_VO> selectOrderlogDetailListByOrderId(SqlSession session, String orderId) throws SQLException {
+		List<Order_Prod_VO> orderlogList = session.selectList("Orderlog-Mapper.selectOrderlogDetailListByOrderId",orderId);
 			return orderlogList;
 	}
 
@@ -57,7 +57,7 @@ public class OrderlogDetailDAOImpl implements OrderlogDetailDAO {
 	}
 
 	@Override
-	public void modifyOrderlogDetail(SqlSession session, Orderlog_Prod_VO orderlogProd) throws SQLException {
+	public void modifyOrderlogDetail(SqlSession session, Order_Prod_VO orderlogProd) throws SQLException {
 		session.update("Orderlog-Mapper.modifyOrderlogDetail",orderlogProd);
 		
 	}

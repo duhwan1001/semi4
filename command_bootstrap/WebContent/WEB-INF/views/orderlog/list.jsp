@@ -95,9 +95,9 @@
 													<img width="30px" height="30px" src="/orderlog/getPicture.do?picture=${orderlogProd.prodImg}" class="img-circle elevation-2">
 												</div>
 												<div class="col-sm-6">${orderlog.prodName}</div>
-												<c:if test="${orderlog.cnt } > 1">
+<%-- 												<c:if test="${orderlog.cnt } > 1">
 												외 ${orderlog.cnt - 1}
-												</c:if>
+												</c:if> --%>
 												
 												
 											</div>

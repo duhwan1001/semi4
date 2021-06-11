@@ -11,8 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import kr.or.ddit.command.PageMaker;
 import kr.or.ddit.command.SearchCriteria;
 import kr.or.ddit.dao.OrderlogDetailDAO;
+import kr.or.ddit.dto.Order_Prod_VO;
 import kr.or.ddit.dto.OrderlogDetailVO;
-import kr.or.ddit.dto.Orderlog_Prod_VO;
 
 public class OrderlogDetailServiceImpl implements OrderlogDetailService{
 
@@ -79,11 +79,11 @@ public class OrderlogDetailServiceImpl implements OrderlogDetailService{
 	}
 
 	@Override
-	public List<Orderlog_Prod_VO> getOrderlogDetailListByOrderId(String orderId) throws SQLException {
+	public List<Order_Prod_VO> getOrderlogDetailListByOrderId(String orderId) throws SQLException {
 		SqlSession session = sqlSessionFactory.openSession();
 		
 		try {
-			List<Orderlog_Prod_VO> orderlogDetailList = orderlogDetailDAO.selectOrderlogDetailListByOrderId(session, orderId);
+			List<Order_Prod_VO> orderlogDetailList = orderlogDetailDAO.selectOrderlogDetailListByOrderId(session, orderId);
 			return orderlogDetailList;
 		}finally {
 			session.close();
@@ -105,7 +105,7 @@ public class OrderlogDetailServiceImpl implements OrderlogDetailService{
 	}
 
 	@Override
-	public void modifyDetail(Orderlog_Prod_VO orderlogProd) throws SQLException {
+	public void modifyDetail(Order_Prod_VO orderlogProd) throws SQLException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			orderlogDetailDAO.modifyOrderlogDetail(session, orderlogProd);

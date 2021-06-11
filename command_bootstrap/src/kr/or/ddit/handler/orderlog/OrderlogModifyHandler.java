@@ -3,7 +3,7 @@ package kr.or.ddit.handler.orderlog;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.dto.Orderlog_Prod_VO;
+import kr.or.ddit.dto.Order_Prod_VO;
 import kr.or.ddit.handler.Handler;
 import kr.or.ddit.service.OrderlogDetailService;
 import kr.or.ddit.service.OrderlogService;
@@ -30,7 +30,7 @@ public class OrderlogModifyHandler implements Handler {
 		String orderDetailStatus = request.getParameter("orderChooseSelect");
 		int orderDetailNo = Integer.parseInt(request.getParameter("orderDetailNo"));
 		System.out.println("mo Han : orderDetailNo :"+orderDetailNo);
-		Orderlog_Prod_VO orderlogProd = new Orderlog_Prod_VO();
+		Order_Prod_VO orderlogProd = new Order_Prod_VO();
 		
 		orderlogProd.setOrderDetailNo(orderDetailNo);
 		orderlogProd.setOrderDetailStatus(orderDetailStatus);
