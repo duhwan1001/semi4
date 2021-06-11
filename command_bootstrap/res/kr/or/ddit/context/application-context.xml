@@ -11,6 +11,8 @@
 	<bean id="memberDAO" class="kr.or.ddit.dao.MemberDAOImpl" />
 	<bean id="noticeDAO" class="kr.or.ddit.dao.NoticeDAOImpl" />
 	<bean id="cartDAO" class="kr.or.ddit.dao.CartDAOImpl" />
+	<bean id="orderlogDAO" class="kr.or.ddit.dao.OrderlogDAOImpl"/>
+	<bean id="orderlogDetailDAO" class="kr.or.ddit.dao.OrderlogDetailDAOImpl"/>
 	
 	<!-- Service layer -->
 	<bean id="menuService" class="kr.or.ddit.service.MenuServiceImpl">
@@ -29,5 +31,21 @@
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="cartDAO" ref-value="cartDAO"/>
 	</bean>
+
+
+
+
+
+
+	<bean id="orderlogService" class="kr.or.ddit.service.OrderlogServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="orderlogDAO" ref-value="orderlogDAO"/>	
+	</bean>
+	<bean id="orderlogDetailService" class="kr.or.ddit.service.OrderlogDetailServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="orderlogDetailDAO" ref-value="orderlogDetailDAO"/>	
+	</bean>
+	
+>>>>>>> branch 'master' of https://github.com/duhwan1001/semi4.git
 	
 </beans>
