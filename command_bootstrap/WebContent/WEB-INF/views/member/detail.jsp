@@ -71,7 +71,9 @@
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="location.href='modifyForm.do?id=${member.userId}';" id="modifyBtn" class="btn btn-warning ">수 정</button>
 			          		</div>
-		          		
+			          		<div class="col-sm-3 text-center">
+			          			<button type="button" onclick="window.opener.parent.location.href='/orderLog/list.do?id=${member.userId}';" id="modifyBtn" class="btn btn-info ">기록</button>
+			          		</div>
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="location.href='remove.do?id=${member.userId}';" 
 			          			id="deleteBtn" class="btn btn-danger" >삭 제</button>

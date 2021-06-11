@@ -33,7 +33,7 @@
 		select 
 		* 
 		from shopuser 
-		where userid = #{id}
+		where userId = #{userId}
 	</select>
 	
 	<select id="selectMemberList" resultType="member">
