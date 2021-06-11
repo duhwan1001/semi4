@@ -11,8 +11,7 @@
      	<!-- main menu list -->
      	<c:forEach items="${menuList }" var="menu">
     	<li class="nav-item d-none d-sm-inline-block"  >
-    	<a href="javascript:subMenu('${menu.mcode }');goPage('${menu.murl}','${menu.mcode }');"
-    		class="nav-link">
+    	<a mlevel="${menu.mlevel}" href="javascript:subMenu('${menu.mcode }');goPage('${menu.murl}','${menu.mcode }');" class="nav-link">
     			<i class="${menu.micon }" ></i>
     			${menu.mname }
     		</a>

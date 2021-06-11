@@ -33,7 +33,7 @@
 		select 
 		* 
 		from shopuser 
-		where userid = #{id}
+		where userId = #{userId}
 	</select>
 	
 	<select id="selectMemberList" resultType="member">
@@ -43,9 +43,9 @@
 	</select>
 	
 	<update id="insertMember" parameterType="member">
-		insert into 
-		member(id, pwd, email, phone,picture,name,authority)
-		values(#{id},#{pwd},#{email},#{phone},#{picture},#{name},#{authority})
+	insert into
+	SHOPUSER(userId, userPw, userPicture, userPhone,userName,userRegdate,userOwncost,userRole)
+	values(#{userId},#{userPw},#{userPicture},#{userPhone},#{userName},sysdate,0,#{userRole})
 	</update>	
 	
 	<update id="updateMember" parameterType="member">

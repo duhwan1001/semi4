@@ -11,7 +11,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
 		<div class="login-logo">
-			<a href="#"><b>관리자 로그인</b></a>
+			<a href="#"><b>로그인</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
@@ -29,22 +29,17 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-8">
-						<div class="checkbox icheck">
-							<label> <input type="checkbox" name="rememberMe" value="check"> Remember Me
-							</label>
-						</div>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">회원가입</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			</form>
-
-			
-
-			<a href="#" style="font-weight:bold;">아이디/패스워드 찾기</a><br> 
+			<br>
+			<a href="#" style="font-weight:bold; text-align: center;">아이디/패스워드 찾기</a><br> 
 			
 
 		</div>

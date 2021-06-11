@@ -9,7 +9,7 @@
     <a href="index3.html" class="brand-link">
       <img src="<%=request.getContextPath()%>/resources/bootstrap/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Spurs unofficial Store</span>
     </a>
 
     <!-- Sidebar -->
@@ -22,11 +22,11 @@
         </div>
         <div class="info">
          	<div class="row">
-              <a href="#" class="d-block">${loginUser.userName }</a>
-              <button onclick="location.href='<%=request.getContextPath() %>/logout.do';" 
-              	class="btn btn-xs btn-primary col-xs-3 " type="button" >LOGOUT</button>
+              <a href="#" class="d-block">&nbsp;&nbsp;${loginUser.userName }</a>
+              &nbsp;&nbsp;<button onclick="location.href='<%=request.getContextPath() %>/logout.do';" class="btn btn-xs btn-primary col-xs-3" type="button" >LOGOUT</button>
          	</div>
            	<a href="tel:${loginUser.userPhone }">tel : ${loginUser.userPhone }</a><br/>
+           	<a>role : <span id="roleCheck">${loginUser.userRole }</span></a><br/>
         </div>    
       </div>
 	

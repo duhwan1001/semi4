@@ -8,7 +8,7 @@
 	
 	window.onload=function(){
 		$.ajax({
-			url:"/getMcode.do?mName=회원목록",
+			url:"/getMcode.do?mName=회원관리",
 			type:"get",
 			success:function(menu){
 				window.opener.parent.location.href="/index.do?mCode="+menu.mcode;
