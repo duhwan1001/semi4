@@ -10,6 +10,7 @@
 	<bean id="menuDAO"  class="kr.or.ddit.dao.MenuDAOImpl" />
 	<bean id="memberDAO" class="kr.or.ddit.dao.MemberDAOImpl" />
 	<bean id="noticeDAO" class="kr.or.ddit.dao.NoticeDAOImpl" />
+	<bean id="cartDAO" class="kr.or.ddit.dao.CartDAOImpl" />
 	
 	<!-- Service layer -->
 	<bean id="menuService" class="kr.or.ddit.service.MenuServiceImpl">
@@ -24,6 +25,9 @@
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="noticeDAO" ref-value="noticeDAO"/>
 	</bean>
-	
+	<bean id="cartService" class="kr.or.ddit.service.CartServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="cartDAO" ref-value="cartDAO"/>
+	</bean>
 	
 </beans>

@@ -6,7 +6,11 @@
 <configuration>
 
 	<properties resource="kr/or/ddit/properties/db.properties" />	
-				
+  	
+	<settings>
+  		<!-- 자동으로 카멜케이스 규칙으로 변환 -->
+	  	<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
 	
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="str" />
@@ -15,6 +19,10 @@
 		<typeAlias type="kr.or.ddit.dto.MenuVO" alias="menu" />
 		<typeAlias type="kr.or.ddit.dto.MemberVO" alias="member" />
 		<typeAlias type="kr.or.ddit.dto.NoticeVO" alias="notice" />
+		<typeAlias type="kr.or.ddit.dto.CartVO" alias="cart" />
+		<typeAlias type="kr.or.ddit.dto.OrderlogVO" alias="orderlog" />
+		<typeAlias type="kr.or.ddit.dto.OrderlogDetailVO" alias="orderlogdetail" />
+		<typeAlias type="kr.or.ddit.dto.Orderlog_Prod_VO" alias="orderlogprod" />
 	</typeAliases>
 	
 	
@@ -37,6 +45,8 @@
 		<mapper resource="kr/or/ddit/mybatis/Menu-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Member-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Notice-Mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/Cart-Mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/Orderlog-Mapper.xml"/>
 	</mappers>
 </configuration>
 
