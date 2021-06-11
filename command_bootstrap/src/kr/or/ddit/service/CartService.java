@@ -13,7 +13,7 @@ public interface CartService {
 	
 	void cartQtyMinus(int cartNo) throws SQLException;
 	
-	void cartInsertItem(CartVO cart);
+	void cartInsertItem(CartVO cart) throws SQLException;
 	
 	void cartDeleteItem(int cartNo) throws SQLException;
 }

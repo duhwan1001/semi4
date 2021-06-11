@@ -8,7 +8,7 @@ public class CartVO {
 	private String prod_img;
 	private String prod_name;
 	private int prod_cost;
-	
+	 
 	
 	public int getCart_no() {
 		return cart_no;

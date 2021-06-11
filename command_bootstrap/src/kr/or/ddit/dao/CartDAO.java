@@ -10,7 +10,7 @@ import kr.or.ddit.dto.CartVO;
 public interface CartDAO {
 	// 장바구니 내역 조회
 	List<CartVO> selectCartList(SqlSession session, String userId) throws SQLException;
-
+ 
 	// 장바구니 수량 추가
 	void updateQtyPlus(SqlSession session, int cartNo) throws SQLException;
 	

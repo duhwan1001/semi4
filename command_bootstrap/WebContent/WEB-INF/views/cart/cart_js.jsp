@@ -10,7 +10,7 @@ function totalPrice(){
 	        var price = $(this).attr('id');
 	        total += parseInt(price * qty);
 		}
-	});
+	}); 
 	$("#totalPrice").html(total);
 }
 function qtyMinus(targetObj, cartNo){

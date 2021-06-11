@@ -19,7 +19,7 @@ public class CartInsertItemHandler implements Handler{
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = "";
+		String url = null;
 		
 		int prodId = Integer.parseInt(request.getParameter("prodId"));
 		int prodQty = Integer.parseInt(request.getParameter("prodQty"));

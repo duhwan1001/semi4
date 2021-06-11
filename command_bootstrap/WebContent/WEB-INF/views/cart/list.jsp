@@ -223,9 +223,9 @@
 					<c:forEach items="${cartList }" var="cart">
 						<tr style='font-size:0.85em;'>
 							<td><input type="checkbox" name="price" id="${cart.prod_cost }" onclick="totalPrice()" checked></td>
-							<td></td>
-							<td>${cart.prod_name }</td>
-							<td>${cart.prod_cost }</td>
+							<td><img src="/prod/getPicture.do?picture=${cart.prod_img}" style="width: 200px;"></td>
+							<td><h4>${cart.prod_name }</h4></td>
+							<td><h4>${cart.prod_cost }원</h4></td>
 							<td>
 							<div class="codr_unit_amount">
 								<div class="codr_amount">
@@ -237,7 +237,7 @@
 								</div>
 							</div>
 							</td>
-							<td><a href="/cart/cartDeleteItem.do?cartNo=${cart.cart_no}">삭제하기</a></td>
+							<td><a href="/cart/cartDeleteItem.do?cartNo=${cart.cart_no}"><h4>삭제하기</h4></a></td>
 						</tr>
 					</c:forEach>
 				</table>				

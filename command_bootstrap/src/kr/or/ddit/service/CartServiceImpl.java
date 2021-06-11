@@ -65,7 +65,7 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public void cartInsertItem(CartVO cart) {
+	public void cartInsertItem(CartVO cart) throws SQLException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 

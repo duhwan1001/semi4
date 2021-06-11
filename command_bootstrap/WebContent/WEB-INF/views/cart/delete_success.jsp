@@ -6,4 +6,4 @@
 <script>
 	alert("장바구니 아이템이 삭제되었습니다.");	
 	location.href='list.do';
-</script>
+</script> 

@@ -11,7 +11,7 @@
 	</select>
 	
 	<update id="insertCartItem">
-		insert into cart(CART_NO,USER_ID,PROD_ID,PROD_QTY) values(CART_SEQ.nextval, #{id}, #{prodId}, #{prodQty})
+		insert into cart(CART_NO,USER_ID,PROD_ID,PROD_QTY) values(CART_SEQ.nextval, #{user_id}, #{prod_id}, #{prod_qty})
 	</update>
 	
 	<update id="updateQtyPlus">
