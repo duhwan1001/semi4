@@ -117,12 +117,6 @@
 			          			<button type="button" onclick="location.href='remove.do?id=${member.id}';" 
 			          			id="deleteBtn" class="btn btn-danger" >삭 제</button>
 			          		</div>
-		          			<c:if test="${member.enabled ne 0 }">
-			          		<div class="col-sm-3 text-center">
-			          			<button type="button" onclick="location.href='stop.do?id=${member.id}';" 
-			          			id="stopBtn" class="btn btn-info" >정 지</button>
-			          		</div>
-			          		</c:if>
 			          	
 			          		<div class="col-sm-3 text-center">
 			            		<button type="button" id="listBtn" onclick="CloseWindow();" class="btn btn-primary pull-right">닫 기</button>

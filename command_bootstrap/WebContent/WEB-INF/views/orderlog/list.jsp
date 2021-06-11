@@ -92,7 +92,7 @@
 <%-- 											<div>${orderlog.buyDate }</div> --%>
 											<div class="row">
 												<div class="col-sm-6">
-													<img width="30px" height="30px" src="/orderlog/getPicture.do?picture=${orderlogProd.prodImg}" class="img-circle elevation-2">
+													<img width="30px" height="30px" src="/orderlog/getPicture.do?picture=${orderlog.prodImg}" class="img-circle elevation-2">
 												</div>
 												<div class="col-sm-6">${orderlog.prodName}
  												<c:if test="${orderlog.tmp gt 1}">

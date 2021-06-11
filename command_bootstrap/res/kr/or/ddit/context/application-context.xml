@@ -14,6 +14,7 @@
 	<bean id="orderlogDAO" class="kr.or.ddit.dao.OrderlogDAOImpl"/>
 	<bean id="orderlogDetailDAO" class="kr.or.ddit.dao.OrderlogDetailDAOImpl"/>
 	<bean class="kr.or.ddit.dao.ProdDAOImpl" id="prodDAO"/>
+	<bean class="kr.or.ddit.dao.BoardDAOImpl" id="boardDAO"/>
 	
 	<!-- Service layer -->
 	<bean id="menuService" class="kr.or.ddit.service.MenuServiceImpl">
@@ -44,6 +45,10 @@
 	<bean class="kr.or.ddit.service.ProdServiceImpl" id="prodService">
 		<property ref-value="sqlSessionFactory" name="sqlSessionFactory"/>
 		<property ref-value="prodDAO" name="prodDAO"/>
+	</bean>
+	<bean class="kr.or.ddit.service.BoardServiceImpl" id="boardService">
+		<property ref-value="sqlSessionFactory" name="sqlSessionFactory"/>
+		<property ref-value="boardDAO" name="boardDAO"/>
 	</bean>
 	
 	

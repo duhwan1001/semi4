@@ -69,13 +69,13 @@
 			          		
 			          		
 			          		<div class="col-sm-3 text-center">
-			          			<button type="button" onclick="location.href='modifyForm.do?id=${member.userId}';" id="modifyBtn" class="btn btn-warning ">수 정</button>
+			          			<button type="button" onclick="editinfo();" id="modifyBtn" class="btn btn-warning ">수 정</button>
 			          		</div>
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="window.opener.parent.location.href='/orderLog/list.do?id=${member.userId}';" id="modifyBtn" class="btn btn-info ">기록</button>
 			          		</div>
 			          		<div class="col-sm-3 text-center">
-			          			<button type="button" onclick="location.href='remove.do?id=${member.userId}';" 
+			          			<button type="button" onclick="infodelete()" 
 			          			id="deleteBtn" class="btn btn-danger" >삭 제</button>
 			          		</div>
 			          		<div class="col-sm-3 text-center">
@@ -92,6 +92,16 @@
 <script>
 window.onload=function(){
 	MemberPictureThumb(document.querySelector('[data-id="${member.userId}"]'),'${member.userPicture}');
+}
+
+function editinfo(){
+	alert("준비중입니다.");
+}
+function orderlog(){
+	alert(".");
+}
+function infodelete(){
+	alert("준비중입니다.");
 }
 </script>  
   
