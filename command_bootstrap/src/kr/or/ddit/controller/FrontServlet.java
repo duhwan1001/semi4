@@ -1,17 +1,15 @@
 package kr.or.ddit.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.or.ddit.dto.MemberVO;
 import kr.or.ddit.handler.Handler;
+
 
 
 public class FrontServlet extends HttpServlet {
