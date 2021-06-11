@@ -79,8 +79,8 @@
 							<div class="col-sm-12">
 								<div class="card">
 									<div class="card-body">
-										<button type="submit">확인</button>
-										<button type="button" onclick="CloseWindow();">취소</button>
+										<button  class="btn btn-primary" type="submit">확인</button>
+										<button  class="btn btn-primary" type="button" onclick="CloseWindow();">취소</button>
 									</div>
 								</div>
 							</div>

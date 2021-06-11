@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.command.SearchCriteria;
+import kr.or.ddit.dto.MemberVO;
 import kr.or.ddit.handler.Handler;
 import kr.or.ddit.service.OrderlogService;
 
@@ -45,7 +46,9 @@ public class OrderlogListHandler implements Handler {
 		cri.setSearchType(searchType);
 
 //		String userId = request.getParameter("userId");
-		String userId = "cdwcdw34";
+		MemberVO loginUser = (MemberVO)request.getSession().getAttribute("loginUser");
+		// cdwcdw34
+		String userId = loginUser.getUserId();
 		try {
 		Map<String, Object> dataMap = orderlogService.getOrderlogList(userId, cri);
 		request.setAttribute("dataMap", dataMap);

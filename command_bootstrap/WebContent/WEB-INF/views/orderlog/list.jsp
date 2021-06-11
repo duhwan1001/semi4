@@ -37,11 +37,11 @@
 				<div id="keyword" style="width: 550px;">
 					<!-- class="card-tools"  : 오른쪽 정렬시킴-->
 					<div class="row">
-						<h3>주문목록</h3>
+<!-- 						<h3>주문목록</h3> -->
 					</div>
 					<div class="input-group row">
 						<input class="form-control" type="text" name="keyword"
-							placeholder="주문한 상품을 적어주세요" value="" /> 
+							placeholder="주문한 상품을 입력해주세요" value="" /> 
 						<select class="form-control col-md-4" name="searchType" id="searchType" hidden="">
 							<option value="n"></option>
 						</select>	
@@ -53,11 +53,11 @@
 						</span>
 					</div>
 					<div class="row">
-						<button type="button" class="btn btn-primary" onclick="">최근6개월</button>
-						<button type="button" class="btn btn-primary" onclick="">2021</button>
-						<button type="button" class="btn btn-primary" onclick="">2020</button>
-						<button type="button" class="btn btn-primary" onclick="">2019</button>
-						<button type="button" class="btn btn-primary" onclick="">2018</button>
+						<button type="button" class="btn btn-primary" onclick="listyear_go('1');">최근6개월</button>
+						<button type="button" class="btn btn-primary" onclick="listyear_go('21')">2021</button>
+						<button type="button" class="btn btn-primary" onclick="listyear_go('20');">2020</button>
+						<button type="button" class="btn btn-primary" onclick="listyear_go('19');">2019</button>
+						<button type="button" class="btn btn-primary" onclick="listyear_go('18');">2018</button>
 					</div>
 				</div>
 			</div>
@@ -94,11 +94,11 @@
 												<div class="col-sm-6">
 													<img width="30px" height="30px" src="/orderlog/getPicture.do?picture=${orderlogProd.prodImg}" class="img-circle elevation-2">
 												</div>
-												<div class="col-sm-6">${orderlog.prodName}</div>
-<%-- 												<c:if test="${orderlog.cnt } > 1">
-												외 ${orderlog.cnt - 1}
-												</c:if> --%>
-												
+												<div class="col-sm-6">${orderlog.prodName}
+ 												<c:if test="${orderlog.tmp gt 1}">
+												외 ${orderlog.tmp - 1}
+												</c:if>
+												</div>
 												
 											</div>
 										</div>
@@ -113,9 +113,9 @@
 												<button style="width: 100%" class="btn btn-primary " type="button" onclick="OpenWindow('detail.do?orderId=${orderlog.orderId}','','800','900')">상세조회</button>
 											</div>
 											<div style="height: 3px"></div>
-											<div class="row">
-												<button style="width: 100%"  class="btn btn-primary" type="button" onclick="">교환:반품</button>
-											</div>
+<!-- 											<div class="row"> -->
+<!-- 												<button style="width: 100%"  class="btn btn-primary" type="button" onclick="">교환:반품</button> -->
+<!-- 											</div> -->
 											<div style="height: 3px"></div>
 											<div class="row">
 												<button style="width: 100%"  class="btn btn-primary" type="button" onclick="">리뷰 작성</button>
@@ -133,9 +133,10 @@
 		<%@ include file="/WEB-INF/views/common/pagination.jsp"%>
 	</section>
 	<!-- content -->
-	<script src="/resources/js/common.js"></script>
 	<script type="text/javascript">
+	
 	</script>
+	<script src="/resources/js/common.js"></script>
 </body>
 
 

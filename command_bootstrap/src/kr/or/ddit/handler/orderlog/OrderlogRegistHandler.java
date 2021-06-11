@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.or.ddit.dto.MemberVO;
 import kr.or.ddit.dto.Order_Prod_VO;
 import kr.or.ddit.dto.OrderlogDetailVO;
 import kr.or.ddit.dto.OrderlogVO;
@@ -22,20 +23,22 @@ public class OrderlogRegistHandler implements Handler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		System.out.println("orderregist 핸들러 입장");
 		
 		String url=null;
-
-		
-		
 		
 		ObjectMapper mapper = new ObjectMapper();
 		Order_Prod_VO orderlogProd = mapper.readValue(request.getReader(), Order_Prod_VO.class);
 		
 		int prodId = orderlogProd.getProdId();
 		int prodQty = orderlogProd.getProdQty();
+		System.out.println("prodId: "+prodId);
+		System.out.println("prodQty: "+prodQty);
 		
-		String userId = "cdwcdw34";
+		
+		MemberVO loginUser = (MemberVO)request.getSession().getAttribute("loginUser");
+		// cdwcdw34
+		String userId = loginUser.getUserId();
 		String orderId = "od" + "00001" + "_" + new Date();
 
 		OrderlogVO orderlog = new OrderlogVO();

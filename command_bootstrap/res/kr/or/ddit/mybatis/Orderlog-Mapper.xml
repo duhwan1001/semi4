@@ -34,6 +34,9 @@
 		<if test="searchType == 's'.toString()">
 			and ORDER_STATUS like '%'||#{keyword}||'%'
 		</if>
+		<if test="searchType == 'y'.toString()">
+			AND BUY_DATE like #{keyword}||'%'
+		</if>
 			ORDER BY o.ORDER_ID DESC
 	</select>
 	
@@ -55,7 +58,7 @@
 <!-- 	</select> -->
 	
 	<select id="selectSearchOrderlogList" resultType="orderlogprod">
-        	SELECT o.*, P.PROD_IMG, d.prod_id, D.ORDER_DETAIL_NO, D.cnt as tmp
+        	SELECT o.*, P.PROD_IMG, d.prod_id, D.ORDER_DETAIL_NO, D.cnt as tmp, p.prod_name
 			FROM ORDER_LOG o
 				inner join (
 						select a.*, b.prod_Id
@@ -75,6 +78,12 @@
 			<if test="searchType == 's'.toString()">
 				and ORDER_STATUS like '%'||#{keyword}||'%'
 			</if>
+			<if test="searchType == 'y'.toString()">
+				AND BUY_DATE like #{keyword}||'%'
+			</if>
+			<if test="searchType == 'x'.toString()">
+			
+			</if>
 			ORDER BY o.ORDER_ID DESC
 	</select>
 	
@@ -92,7 +101,8 @@
 			P.PROD_ID,
 			P.PROD_NAME,
 			D.PROD_QTY,
-			P.PROD_IMG
+			P.PROD_IMG,
+			P.PROD_COST
 		FROM 
 			ORDER_LOG O
 		INNER JOIN 

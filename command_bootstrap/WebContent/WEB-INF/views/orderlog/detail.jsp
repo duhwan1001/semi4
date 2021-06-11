@@ -14,7 +14,7 @@
 		<div class="container-fluid">
 			<div class="row md-2">
 				<div class="col-sm-6">
-					<h1>주문목록</h1>
+<!-- 					<h1>주문목록</h1> -->
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -63,16 +63,16 @@
 														src="/orderlog/getPicture.do?picture=${orderlogProd.prodImg}"
 														class="img-circle elevation-2">
 												</div>
-												<div class="col-sm-6">${orderlogProd.prodName }</div>
-												<div class="col-sm-1">수량 : ${orderlogProd.prodQty }</div>
-												<div class="col-sm-2">가격 : ${orderlogProd.prodCost }</div>
+												<div class="col-sm-5">${orderlogProd.prodName }</div>
+												<div class="col-sm-2">수량 : ${orderlogProd.prodQty }</div>
+												<div class="col-sm-2">가격 : ₩${orderlogProd.prodCost }</div>
 											</div>
-											<div class="row">
-												<div class="col-sm-6">가격 : ${orderlogProd.prodCost }*${orderlogProd.prodQty }</div>
-												<div class="col-sm-6">
-													<button type="button" onclick="">장바구니담기</button>
+												<div class="row">
+													<div class="col-sm-12" style="text-align: right;"><strong>총가격 : ₩${orderlogProd.prodCost * orderlogProd.prodQty }</strong></div>
+	<!-- 												<div class="col-sm-6"> -->
+	<!-- 													<button class="btn btn-primary" type="button" onclick="">장바구니담기</button> -->
+	<!-- 												</div> -->
 												</div>
-											</div>
 										</div>
 										<div class="card-footer"></div>
 									</div>
@@ -104,6 +104,7 @@
 				</div>
 			</div>
 		</c:forEach>
+				<button  class="btn btn-primary" type="button" onclick="CloseWindow();">닫기</button>
 		<c:set var="list_url" value="list.do"></c:set>
 	</section>
 	<!-- content -->
